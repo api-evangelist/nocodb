@@ -1,0 +1,242 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: NocoDB
+providerId: nocodb
+created: '2026-06-12'
+modified: '2026-06-12'
+reconciled: true
+url: https://nocodb.com/pricing
+
+plans:
+
+  - name: Free (Cloud)
+    slug: cloud-free
+    type: freemium
+    description: >-
+      Free forever cloud plan for individuals testing NocoDB or building small
+      prototypes. No credit card required.
+    pricing:
+      model: free
+      amount: 0
+      currency: USD
+      period: month
+    quotas:
+      - metric: seats-editors
+        limit: 3
+        type: quota
+      - metric: seats-commenters
+        limit: 10
+        type: quota
+      - metric: records
+        limit: 1000
+        type: quota
+      - metric: storage-gb
+        limit: 1
+        type: quota
+      - metric: api-calls
+        limit: 1000
+        period: month
+        type: quota
+      - metric: automation-runs
+        limit: 100
+        period: month
+        type: quota
+      - metric: extensions
+        limit: 1
+        type: quota
+
+  - name: Plus (Cloud)
+    slug: cloud-plus
+    type: paid
+    description: >-
+      For small teams managing real datasets. Unlimited editors capped at a flat
+      monthly fee — pay for 9, get unlimited. No external database connections.
+    pricing:
+      model: per-seat
+      amount: 12
+      currency: USD
+      period: month
+      billingCycle: annual
+      altMonthly: 15
+      flatCap:
+        editors: 9
+        annualAmount: 108
+        monthlyAmount: 135
+    quotas:
+      - metric: records
+        limit: 50000
+        type: quota
+      - metric: storage-gb
+        limit: 20
+        type: quota
+      - metric: api-calls
+        limit: 100000
+        period: month
+        type: quota
+      - metric: automation-runs
+        limit: 10000
+        period: month
+        type: quota
+      - metric: extensions
+        limit: unlimited
+        type: boolean
+      - metric: external-database-connections
+        limit: 0
+        type: quota
+
+  - name: Business (Cloud)
+    slug: cloud-business
+    type: paid
+    description: >-
+      Designed for growing teams running production workflows. Includes SAML SSO
+      and a higher tier of records, storage, and API calls.
+    pricing:
+      model: per-seat
+      amount: 24
+      currency: USD
+      period: month
+      billingCycle: annual
+      altMonthly: 30
+      flatCap:
+        editors: 9
+        annualAmount: 216
+        monthlyAmount: 270
+    quotas:
+      - metric: records
+        limit: 300000
+        type: quota
+      - metric: storage-gb
+        limit: 100
+        type: quota
+      - metric: api-calls
+        limit: 1000000
+        period: month
+        type: quota
+      - metric: automation-runs
+        limit: 50000
+        period: month
+        type: quota
+      - metric: external-database-connections
+        limit: 10
+        type: quota
+      - metric: saml-sso
+        limit: true
+        type: boolean
+
+  - name: Scale (Cloud)
+    slug: cloud-scale
+    type: paid
+    description: >-
+      For larger organizations needing row-level security, audit logs, and team
+      hierarchy. Minimum 3 editor seats.
+    pricing:
+      model: per-seat
+      amount: 45
+      currency: USD
+      period: month
+      billingCycle: annual
+      altMonthly: 54
+      minimumSeats: 3
+    quotas:
+      - metric: records
+        limit: 1000000
+        type: quota
+      - metric: storage-gb
+        limit: 150
+        type: quota
+      - metric: api-calls
+        limit: 5000000
+        period: month
+        type: quota
+      - metric: automation-runs
+        limit: 250000
+        period: month
+        type: quota
+      - metric: row-level-security
+        limit: true
+        type: boolean
+      - metric: audit-logs
+        limit: true
+        type: boolean
+
+  - name: Enterprise (Cloud)
+    slug: cloud-enterprise
+    type: enterprise
+    description: >-
+      Contact sales for custom pricing. Includes everything in Scale plus
+      SCIM/SSO, staging environment, and white-glove onboarding.
+    pricing:
+      model: custom
+      amount: 0
+      currency: USD
+    quotas:
+      - metric: records
+        limit: unlimited
+        type: boolean
+      - metric: scim-provisioning
+        limit: true
+        type: boolean
+      - metric: staging-environment
+        limit: true
+        type: boolean
+
+  - name: Community (Self-Hosted)
+    slug: self-hosted-community
+    type: free
+    description: >-
+      Free forever self-hosted open-source deployment. No record, storage, or
+      seat limits. Includes all five roles, six views, and webhooks.
+    pricing:
+      model: free
+      amount: 0
+      currency: USD
+    quotas:
+      - metric: records
+        limit: unlimited
+        type: boolean
+      - metric: storage
+        limit: unlimited
+        type: boolean
+      - metric: seats
+        limit: unlimited
+        type: boolean
+
+  - name: Business (Self-Hosted)
+    slug: self-hosted-business
+    type: paid
+    description: >-
+      Licensed self-hosted Business tier. Adds SSO, workflows, scripts,
+      dashboards, and team management.
+    pricing:
+      model: per-seat
+      amount: 24
+      currency: USD
+      period: month
+      billingCycle: annual
+      altMonthly: 30
+
+  - name: Scale (Self-Hosted)
+    slug: self-hosted-scale
+    type: paid
+    description: >-
+      Licensed self-hosted Scale tier. Adds audit logs, row-level security,
+      team hierarchy, and multi-provider AI. Minimum 3 editor seats.
+    pricing:
+      model: per-seat
+      amount: 45
+      currency: USD
+      period: month
+      billingCycle: annual
+      altMonthly: 54
+      minimumSeats: 3
+
+  - name: Enterprise (Self-Hosted)
+    slug: self-hosted-enterprise
+    type: enterprise
+    description: >-
+      Licensed self-hosted Enterprise tier with custom pricing. Supports
+      air-gapped installation, staging environment, and SCIM integration.
+    pricing:
+      model: custom
+      amount: 0
+      currency: USD

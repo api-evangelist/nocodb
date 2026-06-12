@@ -1,0 +1,134 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+provider: NocoDB
+providerId: nocodb
+created: '2026-06-12'
+modified: '2026-06-12'
+
+billingModel:
+  type: tiered-saas
+  description: >-
+    NocoDB charges a flat monthly fee per tier (cloud) or per licensed editor
+    seat (self-hosted). Cloud plans include per-seat pricing capped at 9 editors
+    regardless of actual headcount (pay-for-9-get-unlimited model). Usage is
+    constrained by hard quotas (records, storage, API calls, automation runs)
+    rather than billed on a metered pay-per-use basis. Overages are not billed;
+    users must upgrade to the next tier.
+  currency: USD
+  billingFrequency: monthly
+  annualDiscountAvailable: true
+
+focusColumns:
+  - ChargePeriodStart
+  - ChargePeriodEnd
+  - BilledCurrency
+  - BilledCost
+  - ListCost
+  - ListUnitPrice
+  - PricingUnit
+  - PricingQuantity
+  - ServiceName
+  - ServiceCategory
+  - ResourceType
+  - UsageType
+  - CommitmentDiscountType
+
+meters:
+  - name: editor-seats
+    description: Number of editor seats billed in cloud Business/Scale/Plus plans
+    unit: seat
+    pricingModel: flat-cap
+    notes: Capped at 9 billable seats regardless of actual editors on Plus and above
+
+  - name: api-calls
+    description: REST API calls consumed per calendar month
+    unit: calls
+    pricingModel: included-quota
+    tiers:
+      - plan: cloud-free
+        includedUnits: 1000
+        overageAction: block
+      - plan: cloud-plus
+        includedUnits: 100000
+        overageAction: block
+      - plan: cloud-business
+        includedUnits: 1000000
+        overageAction: block
+      - plan: cloud-scale
+        includedUnits: 5000000
+        overageAction: block
+
+  - name: records
+    description: Total number of active rows stored across all bases in the workspace
+    unit: records
+    pricingModel: included-quota
+    tiers:
+      - plan: cloud-free
+        includedUnits: 1000
+        overageAction: block
+      - plan: cloud-plus
+        includedUnits: 50000
+        overageAction: block
+      - plan: cloud-business
+        includedUnits: 300000
+        overageAction: block
+      - plan: cloud-scale
+        includedUnits: 1000000
+        overageAction: block
+
+  - name: storage-gb
+    description: Gigabytes of file attachment and media storage consumed
+    unit: GB
+    pricingModel: included-quota
+    tiers:
+      - plan: cloud-free
+        includedUnits: 1
+        overageAction: block
+      - plan: cloud-plus
+        includedUnits: 20
+        overageAction: block
+      - plan: cloud-business
+        includedUnits: 100
+        overageAction: block
+      - plan: cloud-scale
+        includedUnits: 150
+        overageAction: block
+
+  - name: automation-runs
+    description: Number of automation/webhook trigger executions per calendar month
+    unit: runs
+    pricingModel: included-quota
+    tiers:
+      - plan: cloud-free
+        includedUnits: 100
+        overageAction: block
+      - plan: cloud-plus
+        includedUnits: 10000
+        overageAction: block
+      - plan: cloud-business
+        includedUnits: 50000
+        overageAction: block
+      - plan: cloud-scale
+        includedUnits: 250000
+        overageAction: block
+
+principles:
+  - name: Visibility
+    description: >-
+      NocoDB does not expose granular usage dashboards via API; workspace admins
+      can monitor record counts, storage, and API call usage from the cloud
+      console. Self-hosted operators are responsible for their own observability
+      stack.
+
+  - name: Optimization
+    description: >-
+      Teams can reduce costs by choosing self-hosted Community (free, unlimited)
+      for development/staging environments and using cloud plans only for
+      production. The pay-for-9-get-unlimited model on Plus and above removes
+      per-head cost growth for teams smaller than 9 editors.
+
+  - name: Accountability
+    description: >-
+      Quotas are enforced as hard limits with no overage billing; workspaces
+      are blocked from exceeding tier limits, making cost predictable. Annual
+      billing provides ~20% discount over monthly pricing.

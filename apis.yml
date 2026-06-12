@@ -1,0 +1,104 @@
+aid: nocodb
+name: NocoDB
+description: >-
+  NocoDB is an open-source, self-hostable alternative to Airtable that turns any
+  relational database — MySQL, PostgreSQL, Microsoft SQL Server, or SQLite — into
+  a collaborative smart spreadsheet. It exposes a versioned REST API (v2 and v3)
+  with separate Data APIs for record CRUD operations and Meta APIs for managing
+  workspaces, bases, tables, fields, views, and attachments. Authentication is
+  handled via API tokens or session auth tokens, with Swagger UI bundled into
+  every instance for live exploration. NocoDB is available as a free community
+  self-hosted deployment or as a managed cloud service with tiered plans ranging
+  from Free to Enterprise.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Database
+  - No-Code
+  - Low-Code
+  - Airtable Alternative
+  - Open Source
+  - Spreadsheet
+  - REST API
+  - Self-Hosted
+url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/apis.yml
+created: '2026-06-12'
+modified: '2026-06-12'
+specificationVersion: '0.19'
+apis:
+  - aid: nocodb:data-api
+    name: NocoDB Data API
+    description: >-
+      RESTful API for querying and manipulating records across tables and views
+      in any NocoDB base. Supports full CRUD operations on rows, filtering via
+      where-clause operators, pagination, sorting, field selection, and bulk
+      operations. Available in v2 and v3; v3 adds quoted-value support for
+      special characters in query parameters.
+    humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+    baseURL: https://app.nocodb.com/api/v3
+    tags:
+      - Records
+      - Rows
+      - Tables
+      - Views
+      - CRUD
+    properties:
+      - type: Documentation
+        url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+      - type: OpenAPI
+        url: https://app.nocodb.com/api/v3/swagger.json
+
+  - aid: nocodb:meta-api
+    name: NocoDB Meta API
+    description: >-
+      RESTful API for managing NocoDB metadata including workspaces, bases,
+      tables, fields, views, hooks (webhooks), scripts, and user permissions.
+      Collaboration-related meta operations require Business plan or higher;
+      View and Script APIs require Enterprise tier or licensed self-hosted
+      Business+.
+    humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+    baseURL: https://app.nocodb.com/api/v3/meta
+    tags:
+      - Metadata
+      - Workspaces
+      - Bases
+      - Tables
+      - Fields
+      - Webhooks
+    properties:
+      - type: Documentation
+        url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+      - type: OpenAPI
+        url: https://app.nocodb.com/api/v2/meta/bases/{base_id}/swagger.json
+
+common:
+  - type: Website
+    url: https://nocodb.com/
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  - type: GitHubOrganization
+    url: https://github.com/nocodb
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/nocodb
+  - type: Blog
+    url: https://nocodb.com/blog
+  - type: Pricing
+    url: https://nocodb.com/pricing
+  - type: StatusPage
+    url: https://status.nocodb.com/
+  - type: Changelog
+    url: https://nocodb.com/changelog
+  - type: X
+    url: https://x.com/nocodb
+  - type: SDK
+    url: https://www.npmjs.com/package/nocodb-sdk
+  - type: Plans
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/plans/nocodb-plans-pricing.yml
+  - type: RateLimits
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/rate-limits/nocodb-rate-limits.yml
+  - type: FinOps
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/finops/nocodb-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

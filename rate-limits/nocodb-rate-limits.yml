@@ -1,0 +1,42 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: NocoDB
+providerId: nocodb
+created: '2026-06-12'
+modified: '2026-06-12'
+url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+
+headers:
+  retryAfter: Retry-After
+
+responseCodes:
+  throttled: 429
+
+notes: >-
+  Rate limits apply uniformly across all pricing plans (cloud and self-hosted).
+  When the limit is exceeded the API returns HTTP 429 Too Many Requests.
+  Callers should wait the Retry-After period (default 30 seconds) before
+  retrying. Self-hosted operators may override the defaults via environment
+  variables (NC_RATE_LIMITER_* settings).
+
+limits:
+  - scope: user
+    metric: requests
+    limit: 5
+    timeFrame: second
+    notes: Default per-user rate limit across all API endpoints.
+
+  - scope: user
+    metric: requests
+    limit: 300
+    timeFrame: minute
+    notes: Derived equivalent of 5 req/s expressed per minute for planning.
+
+selfHostedConfig:
+  envVars:
+    - name: NC_RATE_LIMITER_ENABLED
+      description: Enable or disable rate limiting (true/false)
+    - name: NC_RATE_LIMITER_LIMIT
+      description: Maximum number of requests per window per user
+    - name: NC_RATE_LIMITER_WINDOW_MS
+      description: Rate limit window in milliseconds
