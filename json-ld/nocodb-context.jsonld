@@ -1,0 +1,158 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "nocodb": "https://nocodb.com/vocab/",
+
+    "Base": "nocodb:Base",
+    "Table": "nocodb:Table",
+    "Record": "nocodb:Record",
+    "Field": "nocodb:Field",
+    "View": "nocodb:View",
+    "Workspace": "nocodb:Workspace",
+    "Hook": "nocodb:Hook",
+    "ApiToken": "nocodb:ApiToken",
+
+    "id": "@id",
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "baseId": {
+      "@id": "nocodb:baseId",
+      "@type": "xsd:string"
+    },
+    "tableId": {
+      "@id": "nocodb:tableId",
+      "@type": "xsd:string"
+    },
+    "table_name": {
+      "@id": "nocodb:tableName",
+      "@type": "xsd:string"
+    },
+    "fk_model_id": {
+      "@id": "nocodb:modelId",
+      "@type": "xsd:string"
+    },
+    "fk_workspace_id": {
+      "@id": "nocodb:workspaceId",
+      "@type": "xsd:string"
+    },
+
+    "columns": {
+      "@id": "nocodb:hasField",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "views": {
+      "@id": "nocodb:hasView",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "list": {
+      "@id": "nocodb:records",
+      "@container": "@set"
+    },
+    "pageInfo": {
+      "@id": "nocodb:pageInfo"
+    },
+
+    "uidt": {
+      "@id": "nocodb:uiDataType",
+      "@type": "xsd:string"
+    },
+    "dt": {
+      "@id": "nocodb:dbDataType",
+      "@type": "xsd:string"
+    },
+    "pv": {
+      "@id": "nocodb:isPrimaryValue",
+      "@type": "xsd:boolean"
+    },
+    "pk": {
+      "@id": "nocodb:isPrimaryKey",
+      "@type": "xsd:boolean"
+    },
+    "required": {
+      "@id": "nocodb:isRequired",
+      "@type": "xsd:boolean"
+    },
+    "unique": {
+      "@id": "nocodb:isUnique",
+      "@type": "xsd:boolean"
+    },
+
+    "type": {
+      "@id": "nocodb:viewType",
+      "@type": "xsd:integer"
+    },
+    "lock_type": {
+      "@id": "nocodb:lockType",
+      "@type": "xsd:string"
+    },
+
+    "event": {
+      "@id": "nocodb:hookEvent",
+      "@type": "xsd:string"
+    },
+    "active": {
+      "@id": "nocodb:isActive",
+      "@type": "xsd:boolean"
+    },
+    "notification": {
+      "@id": "nocodb:notification"
+    },
+
+    "totalRows": {
+      "@id": "nocodb:totalRows",
+      "@type": "xsd:integer"
+    },
+    "page": {
+      "@id": "nocodb:page",
+      "@type": "xsd:integer"
+    },
+    "pageSize": {
+      "@id": "nocodb:pageSize",
+      "@type": "xsd:integer"
+    },
+    "isFirstPage": {
+      "@id": "nocodb:isFirstPage",
+      "@type": "xsd:boolean"
+    },
+    "isLastPage": {
+      "@id": "nocodb:isLastPage",
+      "@type": "xsd:boolean"
+    },
+
+    "mimetype": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "size": {
+      "@id": "schema:contentSize",
+      "@type": "xsd:integer"
+    },
+    "token": {
+      "@id": "nocodb:apiToken",
+      "@type": "xsd:string"
+    }
+  }
+}

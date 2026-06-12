@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/nocodb/main/json-schema/nocodb-table-schema.json",
+  "title": "NocoDB Table",
+  "description": "Schema representing a NocoDB table (model) as returned by the Meta API.",
+  "type": "object",
+  "required": ["id", "title"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier of the table"
+    },
+    "fk_model_id": {
+      "type": "string",
+      "description": "Foreign key to the base model"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable table name displayed in the UI"
+    },
+    "table_name": {
+      "type": "string",
+      "description": "Underlying database table name"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["table", "view"],
+      "description": "Type of model"
+    },
+    "columns": {
+      "type": "array",
+      "description": "List of fields (columns) in the table",
+      "items": {
+        "$ref": "#/$defs/Field"
+      }
+    },
+    "views": {
+      "type": "array",
+      "description": "List of views associated with the table",
+      "items": {
+        "$ref": "#/$defs/View"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "Field": {
+      "title": "Field",
+      "type": "object",
+      "required": ["id", "title", "uidt"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string",
+          "description": "Display name for the field"
+        },
+        "column_name": {
+          "type": "string",
+          "description": "Underlying database column name"
+        },
+        "uidt": {
+          "type": "string",
+          "description": "UI data type",
+          "enum": [
+            "SingleLineText", "LongText", "Attachment", "Checkbox",
+            "MultiSelect", "SingleSelect", "Date", "Year", "Time",
+            "PhoneNumber", "Email", "URL", "Number", "Decimal",
+            "Currency", "Percent", "Duration", "Rating", "Formula",
+            "Rollup", "Count", "Lookup", "DateTime", "CreateTime",
+            "LastModifiedTime", "AutoNumber", "Geometry", "JSON",
+            "SpecificDBType", "Text", "Barcode", "QrCode", "Links"
+          ]
+        },
+        "dt": {
+          "type": "string",
+          "description": "Database data type"
+        },
+        "pv": {
+          "type": "boolean",
+          "description": "Is this the primary value field?"
+        },
+        "pk": {
+          "type": "boolean",
+          "description": "Is this the primary key field?"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "unique": {
+          "type": "boolean"
+        }
+      }
+    },
+    "View": {
+      "title": "View",
+      "type": "object",
+      "required": ["id", "title"],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "description": "View type: 1=Grid, 2=Form, 3=Gallery, 4=Kanban, 5=Calendar"
+        },
+        "lock_type": {
+          "type": "string",
+          "enum": ["collaborative", "locked", "personal"]
+        }
+      }
+    }
+  }
+}

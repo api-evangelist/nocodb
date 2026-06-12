@@ -1,0 +1,30 @@
+{
+  "title": "Create Record Example",
+  "description": "Example request and response for creating a new record in a NocoDB table using the Data API v2.",
+  "request": {
+    "method": "POST",
+    "url": "https://app.nocodb.com/api/v2/tables/{tableId}/records",
+    "headers": {
+      "xc-token": "your-api-token",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "Title": "New Record",
+      "Status": "Active",
+      "Notes": "Created via the NocoDB API",
+      "Priority": "High"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "Id": 42,
+      "Title": "New Record",
+      "Status": "Active",
+      "Notes": "Created via the NocoDB API",
+      "Priority": "High",
+      "CreatedAt": "2026-06-12T10:00:00.000Z",
+      "UpdatedAt": "2026-06-12T10:00:00.000Z"
+    }
+  }
+}

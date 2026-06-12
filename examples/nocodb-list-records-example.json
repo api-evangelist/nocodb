@@ -1,0 +1,50 @@
+{
+  "title": "List Records Example",
+  "description": "Example request and response for listing records from a NocoDB table using the Data API v2.",
+  "request": {
+    "method": "GET",
+    "url": "https://app.nocodb.com/api/v2/tables/{tableId}/records",
+    "headers": {
+      "xc-token": "your-api-token"
+    },
+    "queryParameters": {
+      "limit": 25,
+      "offset": 0,
+      "where": "(Status,eq,Active)",
+      "sort": "-CreatedAt",
+      "fields": "Id,Title,Status,CreatedAt"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "list": [
+        {
+          "Id": 3,
+          "Title": "Third Record",
+          "Status": "Active",
+          "CreatedAt": "2026-06-10T09:00:00.000Z"
+        },
+        {
+          "Id": 2,
+          "Title": "Second Record",
+          "Status": "Active",
+          "CreatedAt": "2026-06-05T14:30:00.000Z"
+        },
+        {
+          "Id": 1,
+          "Title": "First Record",
+          "Status": "Active",
+          "CreatedAt": "2026-06-01T08:00:00.000Z"
+        }
+      ],
+      "pageInfo": {
+        "totalRows": 3,
+        "page": 1,
+        "pageSize": 25,
+        "isFirstPage": true,
+        "isLastPage": true
+      }
+    }
+  }
+}

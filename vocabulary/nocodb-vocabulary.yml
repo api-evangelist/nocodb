@@ -1,0 +1,101 @@
+vocabulary:
+  name: NocoDB API Vocabulary
+  description: >-
+    Domain vocabulary for the NocoDB REST API, covering key concepts used
+    across Data API and Meta API endpoints.
+  source: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  terms:
+    - term: Base
+      definition: >-
+        A NocoDB project that wraps one or more database connections. Equivalent
+        to a database or schema in traditional terminology. Each base can contain
+        multiple tables, views, fields, and hooks.
+      aliases: [Project, Database]
+      apiContext: Used as a path parameter (baseId) in Meta API endpoints.
+
+    - term: Table
+      definition: >-
+        A structured set of data organized into rows and columns within a NocoDB
+        base. Corresponds to a database table. Tables are accessed by Data API
+        endpoints using the tableId parameter.
+      aliases: [Model]
+      apiContext: Used as a path parameter (tableId) in both Data and Meta API endpoints.
+
+    - term: Record
+      definition: >-
+        A single row of data within a NocoDB table. Records are created,
+        read, updated, and deleted via Data API endpoints.
+      aliases: [Row]
+      apiContext: Identified by a primary key value (recordId) in Data API path parameters.
+
+    - term: Field
+      definition: >-
+        A column within a NocoDB table that holds a specific type of data.
+        NocoDB supports rich UI data types (uidt) such as SingleLineText,
+        Attachment, Formula, Lookup, Rollup, Links, and more.
+      aliases: [Column]
+      apiContext: Managed via Meta API /fields endpoints; referenced in Data API query parameters.
+
+    - term: View
+      definition: >-
+        A saved configuration for displaying table data. NocoDB supports five
+        view types: Grid (type=1), Form (type=2), Gallery (type=3),
+        Kanban (type=4), and Calendar (type=5). Views can filter, sort,
+        and hide fields without altering the underlying data.
+      aliases: []
+      apiContext: Returned by Meta API /views; referenced via viewId in Data API queries.
+
+    - term: Workspace
+      definition: >-
+        A collaborative space that groups multiple bases and manages team
+        membership. Workspace features require Business plan or higher on
+        NocoDB Cloud.
+      aliases: []
+      apiContext: Used in Enterprise/Business tier Meta API endpoints.
+
+    - term: Hook
+      definition: >-
+        A webhook configuration on a table that triggers an HTTP callback
+        when specific events occur (insert, update, delete, bulk operations).
+      aliases: [Webhook]
+      apiContext: Managed via Meta API /hooks endpoints on a per-table basis.
+
+    - term: xc-token
+      definition: >-
+        A NocoDB API token used for authenticating requests. Passed as the
+        xc-token HTTP header. Generated via the NocoDB UI under Account
+        Settings or Team & Auth.
+      aliases: [API Token]
+      apiContext: Primary authentication mechanism for both Data and Meta API endpoints.
+
+    - term: bearerAuth
+      definition: >-
+        JWT-based session authentication using an Authorization Bearer token
+        obtained from the /api/v1/auth/user/signin endpoint.
+      aliases: [Bearer Token, JWT Token]
+      apiContext: Alternative to xc-token; used in Authorization header.
+
+    - term: where
+      definition: >-
+        A query parameter for filtering records using NocoDB's where-clause
+        syntax. Supports logical operators (~and, ~or, ~not) and comparison
+        operators (eq, neq, gt, gte, lt, lte, like, nlike, is, isnot, in,
+        notIn, between, notBetween, allof, anyof).
+      aliases: [Filter, Query Filter]
+      apiContext: Query parameter on Data API list endpoints.
+
+    - term: uidt
+      definition: >-
+        UI Data Type identifier for a NocoDB field. Determines how data is
+        displayed and validated in the NocoDB interface. Examples include
+        SingleLineText, Attachment, Formula, Lookup, Links.
+      aliases: [UI Data Type]
+      apiContext: Required field property in Meta API field creation/update requests.
+
+    - term: Pagination
+      definition: >-
+        NocoDB Data API uses offset-based pagination with limit (page size,
+        max 1000) and offset (skip count) parameters. Responses include
+        pageInfo with totalRows, page, pageSize, isFirstPage, and isLastPage.
+      aliases: [Page, PageInfo]
+      apiContext: Applied via limit and offset query parameters on list endpoints.

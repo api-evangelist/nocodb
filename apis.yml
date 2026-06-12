@@ -47,6 +47,8 @@ apis:
         url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
       - type: OpenAPI
         url: https://app.nocodb.com/api/v3/swagger.json
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/openapi/nocodb-data-api-openapi.yml
 
   - aid: nocodb:meta-api
     name: NocoDB Meta API
@@ -70,6 +72,8 @@ apis:
         url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
       - type: OpenAPI
         url: https://app.nocodb.com/api/v2/meta/bases/{base_id}/swagger.json
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/openapi/nocodb-meta-api-openapi.yml
 
 common:
   - type: Website
@@ -98,6 +102,16 @@ common:
     url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/rate-limits/nocodb-rate-limits.yml
   - type: FinOps
     url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/finops/nocodb-finops.yml
+  - type: Vocabulary
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/vocabulary/nocodb-vocabulary.yml
+  - type: JSONLDContext
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-ld/nocodb-context.jsonld
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-record-schema.json
+  - type: JSONSchema
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-table-schema.json
+  - type: Blog
+    url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/blogs/blogs.json
 
 maintainers:
   - FN: Kin Lane
