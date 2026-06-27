@@ -3,23 +3,19 @@
   "description": "NocoDB official blog covering product updates, feature announcements, tutorials, and use cases.",
   "url": "https://nocodb.com/blog",
   "rssUrl": null,
-  "rssNote": "No RSS/Atom feed detected on nocodb.com/blog as of 2026-06-12.",
-  "lastChecked": "2026-06-12",
+  "rssNote": "No RSS/Atom feed detected on nocodb.com/blog. Tried /feed, /rss.xml, /feed.xml, /atom.xml \u2014 all 404. HTML/sitemap surface only 3 posts (newest 2022-11-30).",
+  "lastChecked": "2026-06-21",
   "posts": [],
   "repo": "nocodb",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/nocodb",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-table-schema.json",
-      "feed_url": "https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-table-schema.json",
-      "title": "",
+      "source": "https://nocodb.com/blog",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:56:48Z",
+  "agent_pulled": "2026-06-27"
 }
