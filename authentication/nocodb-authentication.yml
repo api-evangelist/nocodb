@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/nocodb-data-api-openapi.yml, openapi/nocodb-meta-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: xcToken
+  type: apiKey
+  in: header
+  parameter: xc-token
+  description: NocoDB API token
+  sources:
+  - openapi/nocodb-data-api-openapi.yml
+  - openapi/nocodb-meta-api-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+  sources:
+  - openapi/nocodb-data-api-openapi.yml
+  - openapi/nocodb-meta-api-openapi.yml

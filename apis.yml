@@ -76,6 +76,10 @@ apis:
         url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/openapi/nocodb-meta-api-openapi.yml
 
 common:
+  - type: DomainSecurity
+    url: security/nocodb-domain-security.yml
+  - type: Authentication
+    url: authentication/nocodb-authentication.yml
   - type: Website
     url: https://nocodb.com/
   - type: Documentation
