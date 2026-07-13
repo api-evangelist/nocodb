@@ -9,13 +9,21 @@
   "repo": "nocodb",
   "feeds": [
     {
-      "source": "https://nocodb.com/blog",
-      "feed_url": "",
+      "source": "https://www.linkedin.com/company/nocodb",
+      "feed_url": "https://www.linkedin.com/company/nocodb",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
+    },
+    {
+      "source": "https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-table-schema.json",
+      "feed_url": "https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/json-schema/nocodb-table-schema.json",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:56:48Z",
-  "agent_pulled": "2026-06-27"
+  "fetched": "2026-07-11T11:50:51Z",
+  "agent_pulled": "2026-07-04"
 }
