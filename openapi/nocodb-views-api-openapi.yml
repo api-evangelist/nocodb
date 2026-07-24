@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Views API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Views
+  description: View management operations
+paths:
+  /api/v1/meta/tables/{tableId}/views:
+    get:
+      summary: List views
+      operationId: view-list
+      description: List all views for a specific table.
+      tags:
+      - Views
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/View'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  schemas:
+    View:
+      title: View
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        type:
+          type: integer
+          description: View type (1=Grid, 2=Form, 3=Gallery, 4=Kanban, 5=Calendar)
+        lock_type:
+          type: string
+          enum:
+          - collaborative
+          - locked
+          - personal
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis

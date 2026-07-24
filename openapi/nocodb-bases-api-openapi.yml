@@ -1,0 +1,218 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Bases API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Bases
+  description: Base (database) management operations
+paths:
+  /api/v1/meta/bases:
+    get:
+      summary: List bases
+      operationId: base-list
+      description: List all bases accessible to the authenticated user.
+      tags:
+      - Bases
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Base'
+                  pageInfo:
+                    $ref: '#/components/schemas/Paginated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    post:
+      summary: Create base
+      operationId: base-create
+      description: Create a new NocoDB base.
+      tags:
+      - Bases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+  /api/v1/meta/bases/{baseId}:
+    get:
+      summary: Read base
+      operationId: base-read
+      description: Retrieve details of a specific base by its identifier.
+      tags:
+      - Bases
+      parameters:
+      - $ref: '#/components/parameters/baseId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Base'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    patch:
+      summary: Update base
+      operationId: base-update
+      description: Update metadata of a specific base.
+      tags:
+      - Bases
+      parameters:
+      - $ref: '#/components/parameters/baseId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    delete:
+      summary: Delete base
+      operationId: base-delete
+      description: Delete a specific base and all its data.
+      tags:
+      - Bases
+      parameters:
+      - $ref: '#/components/parameters/baseId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+components:
+  parameters:
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
+  schemas:
+    BaseReq:
+      title: BaseReq
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+    Base:
+      title: Base
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        fk_workspace_id:
+          type: string
+        type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis

@@ -1,0 +1,216 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Fields API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Fields
+  description: Field/column management operations
+paths:
+  /api/v1/meta/tables/{tableId}/fields:
+    get:
+      summary: List fields
+      operationId: field-list
+      description: List all fields (columns) for a specific table.
+      tags:
+      - Fields
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Field'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    post:
+      summary: Create field
+      operationId: field-create
+      description: Add a new field (column) to a specific table.
+      tags:
+      - Fields
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+  /api/v1/meta/fields/{fieldId}:
+    patch:
+      summary: Update field
+      operationId: field-update
+      description: Update a specific field configuration.
+      tags:
+      - Fields
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    delete:
+      summary: Delete field
+      operationId: field-delete
+      description: Delete a specific field from a table.
+      tags:
+      - Fields
+      parameters:
+      - name: fieldId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+  schemas:
+    Field:
+      title: Field
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: UI data type
+        dt:
+          type: string
+          description: Database data type
+        pv:
+          type: boolean
+          description: Primary value field
+        pk:
+          type: boolean
+          description: Primary key field
+        required:
+          type: boolean
+        unique:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    FieldReq:
+      title: FieldReq
+      type: object
+      required:
+      - title
+      - uidt
+      properties:
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
+        required:
+          type: boolean
+        unique:
+          type: boolean
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis

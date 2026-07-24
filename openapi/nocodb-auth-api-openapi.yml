@@ -1,0 +1,176 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Auth API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Auth
+  description: Authentication and token management
+paths:
+  /api/v1/auth/user/signin:
+    post:
+      summary: Sign in
+      operationId: auth-user-signin
+      description: Authenticate a user with email and password to receive an auth token.
+      tags:
+      - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: JWT auth token
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /api/v1/auth/token/list:
+    get:
+      summary: List API tokens
+      operationId: auth-token-list
+      description: List all API tokens for the authenticated user.
+      tags:
+      - Auth
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+  /api/v1/auth/token:
+    post:
+      summary: Create API token
+      operationId: auth-token-create
+      description: Create a new API token for the authenticated user.
+      tags:
+      - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - description
+              properties:
+                description:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiToken'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+  /api/v1/auth/token/{tokenId}:
+    delete:
+      summary: Delete API token
+      operationId: auth-token-delete
+      description: Delete an API token by its identifier.
+      tags:
+      - Auth
+      parameters:
+      - name: tokenId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - bearerAuth: []
+components:
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  schemas:
+    ApiToken:
+      title: ApiToken
+      type: object
+      properties:
+        id:
+          type: string
+        fk_user_id:
+          type: string
+        description:
+          type: string
+        token:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis

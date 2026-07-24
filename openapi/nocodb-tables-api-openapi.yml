@@ -1,0 +1,321 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Tables API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Tables
+  description: Table management operations
+paths:
+  /api/v1/meta/bases/{baseId}/tables:
+    get:
+      summary: List tables
+      operationId: table-list
+      description: List all tables within a specific base.
+      tags:
+      - Tables
+      parameters:
+      - $ref: '#/components/parameters/baseId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Table'
+                  pageInfo:
+                    $ref: '#/components/schemas/Paginated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    post:
+      summary: Create table
+      operationId: table-create
+      description: Create a new table within a base.
+      tags:
+      - Tables
+      parameters:
+      - $ref: '#/components/parameters/baseId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+  /api/v1/meta/tables/{tableId}:
+    get:
+      summary: Read table
+      operationId: table-read
+      description: Retrieve details of a specific table including its fields and views.
+      tags:
+      - Tables
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Table'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    patch:
+      summary: Update table
+      operationId: table-update
+      description: Update metadata of a specific table.
+      tags:
+      - Tables
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TableReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    delete:
+      summary: Delete table
+      operationId: table-delete
+      description: Delete a specific table and all its records.
+      tags:
+      - Tables
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
+  schemas:
+    TableReq:
+      title: TableReq
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        table_name:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldReq'
+    Table:
+      title: Table
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        table_name:
+          type: string
+        type:
+          type: string
+          enum:
+          - table
+          - view
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        views:
+          type: array
+          items:
+            $ref: '#/components/schemas/View'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Field:
+      title: Field
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: UI data type
+        dt:
+          type: string
+          description: Database data type
+        pv:
+          type: boolean
+          description: Primary value field
+        pk:
+          type: boolean
+          description: Primary key field
+        required:
+          type: boolean
+        unique:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    FieldReq:
+      title: FieldReq
+      type: object
+      required:
+      - title
+      - uidt
+      properties:
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
+        required:
+          type: boolean
+        unique:
+          type: boolean
+    View:
+      title: View
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        type:
+          type: integer
+          description: View type (1=Grid, 2=Form, 3=Gallery, 4=Kanban, 5=Calendar)
+        lock_type:
+          type: string
+          enum:
+          - collaborative
+          - locked
+          - personal
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis

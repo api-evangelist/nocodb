@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data Attachments Hooks API
+  version: '2.0'
+  description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+- url: https://app.nocodb.com
+  description: NocoDB Cloud
+security:
+- xcToken: []
+- bearerAuth: []
+tags:
+- name: Hooks
+  description: Webhook management operations
+paths:
+  /api/v1/meta/tables/{tableId}/hooks:
+    get:
+      summary: List webhooks
+      operationId: hook-list
+      description: List all webhooks (hooks) configured for a specific table.
+      tags:
+      - Hooks
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  list:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Hook'
+                  pageInfo:
+                    $ref: '#/components/schemas/Paginated'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+    post:
+      summary: Create webhook
+      operationId: hook-create
+      description: Create a new webhook for a specific table.
+      tags:
+      - Hooks
+      parameters:
+      - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HookReq'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hook'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+      - xcToken: []
+      - bearerAuth: []
+components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+  schemas:
+    Hook:
+      title: Hook
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        event:
+          type: string
+          enum:
+          - after.insert
+          - after.update
+          - after.delete
+          - after.bulkInsert
+          - after.bulkUpdate
+          - after.bulkDelete
+        operation:
+          type: string
+        active:
+          type: boolean
+        notification:
+          type: object
+          properties:
+            type:
+              type: string
+            payload:
+              type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    HookReq:
+      title: HookReq
+      type: object
+      required:
+      - title
+      - event
+      - notification
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        event:
+          type: string
+          enum:
+          - after.insert
+          - after.update
+          - after.delete
+          - after.bulkInsert
+          - after.bulkUpdate
+          - after.bulkDelete
+        active:
+          type: boolean
+        notification:
+          type: object
+          required:
+          - type
+          properties:
+            type:
+              type: string
+            payload:
+              type: object
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'Bearer token authentication. Use ''Authorization: Bearer <token>'' header format.'
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
