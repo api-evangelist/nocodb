@@ -11,7 +11,20 @@ description: >-
   self-hosted deployment or as a managed cloud service with tiered plans ranging
   from Free to Enterprise.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nocodb.png
 tags:
   - Database
   - No-Code
@@ -26,56 +39,117 @@ created: '2026-06-12'
 modified: '2026-06-12'
 specificationVersion: '0.19'
 apis:
-  - aid: nocodb:data-api
-    name: NocoDB Data API
-    description: >-
-      RESTful API for querying and manipulating records across tables and views
-      in any NocoDB base. Supports full CRUD operations on rows, filtering via
-      where-clause operators, pagination, sorting, field selection, and bulk
-      operations. Available in v2 and v3; v3 adds quoted-value support for
-      special characters in query parameters.
-    humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
-    baseURL: https://app.nocodb.com/api/v3
-    tags:
-      - Records
-      - Rows
-      - Tables
-      - Views
-      - CRUD
-    properties:
-      - type: Documentation
-        url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
-      - type: OpenAPI
-        url: https://app.nocodb.com/api/v3/swagger.json
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/openapi/nocodb-data-api-openapi.yml
-
-  - aid: nocodb:meta-api
-    name: NocoDB Meta API
-    description: >-
-      RESTful API for managing NocoDB metadata including workspaces, bases,
-      tables, fields, views, hooks (webhooks), scripts, and user permissions.
-      Collaboration-related meta operations require Business plan or higher;
-      View and Script APIs require Enterprise tier or licensed self-hosted
-      Business+.
-    humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
-    baseURL: https://app.nocodb.com/api/v3/meta
-    tags:
-      - Metadata
-      - Workspaces
-      - Bases
-      - Tables
-      - Fields
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
-      - type: OpenAPI
-        url: https://app.nocodb.com/api/v2/meta/bases/{base_id}/swagger.json
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/openapi/nocodb-meta-api-openapi.yml
-
+- aid: nocodb:nocodb-attachments-api
+  name: NocoDB Attachments API
+  description: File attachment operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-attachments-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-auth-api
+  name: NocoDB Auth API
+  description: Authentication and token management
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-auth-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-bases-api
+  name: NocoDB Bases API
+  description: Base (database) management operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Bases
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-bases-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-fields-api
+  name: NocoDB Fields API
+  description: Field/column management operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-fields-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-hooks-api
+  name: NocoDB Hooks API
+  description: Webhook management operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Hooks
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-hooks-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-links-api
+  name: NocoDB Links API
+  description: Link relationship operations between records
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Links
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-links-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-records-api
+  name: NocoDB Records API
+  description: CRUD operations on table rows/records
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Records
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-records-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-tables-api
+  name: NocoDB Tables API
+  description: Table management operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-tables-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+- aid: nocodb:nocodb-views-api
+  name: NocoDB Views API
+  description: View management operations
+  humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+  baseURL: https://app.nocodb.com/api/v3
+  tags:
+  - Views
+  properties:
+  - type: OpenAPI
+    url: openapi/nocodb-views-api-openapi.yml
+  - type: Documentation
+    url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/nocodb/overview
   - type: AgenticAccess
     url: agentic-access/nocodb-agentic-access.yml
   - type: DomainSecurity
