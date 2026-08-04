@@ -1,0 +1,290 @@
+{
+  "info": {
+    "_postman_id": "eaaf9443-1d82-4224-b458-4e6bfa71d82a",
+    "name": "NocoDB Data Attachments API",
+    "description": "RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.\n\nContact Support:\n Name: NocoDB",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:34.000Z",
+    "updatedAt": "2026-07-28T02:20:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-eaaf9443-1d82-4224-b458-4e6bfa71d82a"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "tables",
+              "item": [
+                {
+                  "name": "{tableId}",
+                  "item": [
+                    {
+                      "name": "attachments",
+                      "item": [
+                        {
+                          "name": "Upload attachment",
+                          "id": "8af85bc0-2948-4bbc-aa03-53adb9c33ec1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "xc-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "multipart/form-data"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "formdata",
+                              "formdata": [
+                                {
+                                  "key": "file",
+                                  "type": "file",
+                                  "value": null
+                                }
+                              ]
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v2/tables/:tableId/attachments",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v2",
+                                "tables",
+                                ":tableId",
+                                "attachments"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0b963e77-ac07-42e2-9b5c-4761522fa70c",
+                                  "key": "tableId",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the NocoDB table"
+                                }
+                              ]
+                            },
+                            "description": "Upload an attachment file to a NocoDB table."
+                          },
+                          "response": [
+                            {
+                              "id": "4388bc67-53e2-47ab-8a85-8e82e41dd7c8",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "multipart/form-data"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "formdata",
+                                  "formdata": [
+                                    {
+                                      "key": "file",
+                                      "type": "file"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/tables/:tableId/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "tables",
+                                    ":tableId",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "tableId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"mimetype\": \"<string>\",\n  \"size\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"url\": \"<string>\",\n  \"icon\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:20:35.000Z",
+                              "updatedAt": "2026-07-28T02:20:35.000Z",
+                              "uid": "35240-4388bc67-53e2-47ab-8a85-8e82e41dd7c8"
+                            },
+                            {
+                              "id": "a99870af-9743-4667-8392-08972d8f83f5",
+                              "name": "BadRequest",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "multipart/form-data"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "formdata",
+                                  "formdata": [
+                                    {
+                                      "key": "file",
+                                      "type": "file"
+                                    }
+                                  ]
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v2/tables/:tableId/attachments",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v2",
+                                    "tables",
+                                    ":tableId",
+                                    "attachments"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "tableId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"msg\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:20:35.000Z",
+                              "updatedAt": "2026-07-28T02:20:35.000Z",
+                              "uid": "35240-a99870af-9743-4667-8392-08972d8f83f5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:20:35.000Z",
+                          "updatedAt": "2026-07-28T02:20:35.000Z",
+                          "uid": "35240-8af85bc0-2948-4bbc-aa03-53adb9c33ec1"
+                        }
+                      ],
+                      "id": "9e5ff1de-e722-458c-b3f6-a07a87485870",
+                      "createdAt": "2026-07-28T02:20:35.000Z",
+                      "updatedAt": "2026-07-28T02:20:35.000Z",
+                      "uid": "35240-9e5ff1de-e722-458c-b3f6-a07a87485870"
+                    }
+                  ],
+                  "id": "e85bd39b-38f9-479f-84a2-19c3137d96cd",
+                  "createdAt": "2026-07-28T02:20:35.000Z",
+                  "updatedAt": "2026-07-28T02:20:35.000Z",
+                  "uid": "35240-e85bd39b-38f9-479f-84a2-19c3137d96cd"
+                }
+              ],
+              "id": "563cca05-0b18-4b47-a433-0e7456001020",
+              "createdAt": "2026-07-28T02:20:35.000Z",
+              "updatedAt": "2026-07-28T02:20:35.000Z",
+              "uid": "35240-563cca05-0b18-4b47-a433-0e7456001020"
+            }
+          ],
+          "id": "cf9987b8-4ab2-492d-af01-40429d9f4eba",
+          "createdAt": "2026-07-28T02:20:35.000Z",
+          "updatedAt": "2026-07-28T02:20:35.000Z",
+          "uid": "35240-cf9987b8-4ab2-492d-af01-40429d9f4eba"
+        }
+      ],
+      "id": "4ab141f1-ed10-4ad1-8c83-5bd549c0d3ee",
+      "createdAt": "2026-07-28T02:20:35.000Z",
+      "updatedAt": "2026-07-28T02:20:35.000Z",
+      "uid": "35240-4ab141f1-ed10-4ad1-8c83-5bd549c0d3ee"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "xc-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.nocodb.com"
+    }
+  ]
+}

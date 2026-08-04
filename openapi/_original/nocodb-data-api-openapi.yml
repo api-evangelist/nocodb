@@ -1,0 +1,513 @@
+openapi: 3.0.0
+info:
+  title: NocoDB Data API
+  version: "2.0"
+  description: >-
+    RESTful API for querying and manipulating records across tables and views
+    in any NocoDB base. Supports full CRUD operations on rows, filtering via
+    where-clause operators, pagination, sorting, field selection, and bulk
+    operations. Available in v2 and v3; v3 adds quoted-value support for
+    special characters in query parameters.
+  contact:
+    name: NocoDB
+    url: https://nocodb.com
+  license:
+    name: GNU Affero General Public License v3.0
+    url: https://github.com/nocodb/nocodb/blob/develop/LICENSE
+servers:
+  - url: https://app.nocodb.com
+    description: NocoDB Cloud
+externalDocs:
+  description: NocoDB Developer Resources
+  url: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
+tags:
+  - name: Records
+    description: CRUD operations on table rows/records
+  - name: Attachments
+    description: File attachment operations
+  - name: Links
+    description: Link relationship operations between records
+paths:
+  /api/v2/tables/{tableId}/records:
+    get:
+      summary: List records
+      operationId: table-row-list
+      description: >-
+        List all rows from a NocoDB table. Fields to be included in the
+        response can be refined through query parameters. Additionally,
+        filtering, sorting, and pagination can be applied to the results.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/where'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+        - $ref: '#/components/parameters/viewId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    post:
+      summary: Create records
+      operationId: table-row-create
+      description: >-
+        Insert a new row in a table by providing a key-value pair object where
+        the key refers to the column alias. All required fields should be
+        included with the payload, excluding auto-increment and columns with
+        default values.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                - type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    patch:
+      summary: Update records
+      operationId: table-row-update
+      description: >-
+        Bulk update rows in a table by providing key-value pair objects.
+        Requires the record's primary key field.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                - type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                  - type: array
+                    items:
+                      type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    delete:
+      summary: Delete records
+      operationId: table-row-delete
+      description: Bulk delete rows from a table.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                - type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+  /api/v2/tables/{tableId}/records/{recordId}:
+    get:
+      summary: Read a record
+      operationId: table-row-read
+      description: Read a single row from a table by its primary key.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - $ref: '#/components/parameters/recordId'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Not Found
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    patch:
+      summary: Update a record
+      operationId: table-row-update-single
+      description: Update a single row in a table by its primary key.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - $ref: '#/components/parameters/recordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    delete:
+      summary: Delete a record
+      operationId: table-row-delete-single
+      description: Delete a single row from a table by its primary key.
+      tags:
+        - Records
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - $ref: '#/components/parameters/recordId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+  /api/v2/tables/{tableId}/attachments:
+    post:
+      summary: Upload attachment
+      operationId: table-attachment-upload
+      description: Upload an attachment file to a NocoDB table.
+      tags:
+        - Attachments
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Attachment'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+  /api/v2/tables/{tableId}/links/{fieldId}/records/{recordId}:
+    get:
+      summary: List linked records
+      operationId: table-row-links-list
+      description: List all linked records for a specific link field on a record.
+      tags:
+        - Links
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The link field identifier
+        - $ref: '#/components/parameters/recordId'
+        - $ref: '#/components/parameters/fields'
+        - $ref: '#/components/parameters/sort'
+        - $ref: '#/components/parameters/where'
+        - $ref: '#/components/parameters/offset'
+        - $ref: '#/components/parameters/limit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Paginated'
+                  - type: object
+                    properties:
+                      list:
+                        type: array
+                        items:
+                          type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    post:
+      summary: Link records
+      operationId: table-row-links-add
+      description: Link one or more records to a specific link field on a record.
+      tags:
+        - Links
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/recordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                - type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+    delete:
+      summary: Unlink records
+      operationId: table-row-links-remove
+      description: Remove links between records for a specific link field.
+      tags:
+        - Links
+      parameters:
+        - $ref: '#/components/parameters/tableId'
+        - name: fieldId
+          in: path
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/recordId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                - type: array
+                  items:
+                    type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+      security:
+        - xcToken: []
+        - bearerAuth: []
+components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Primary key value of the record
+    viewId:
+      name: viewId
+      in: query
+      schema:
+        type: string
+      description: Optional view identifier to apply view-specific filters
+    fields:
+      name: fields
+      in: query
+      schema:
+        type: string
+      description: Comma-separated list of field names to include in the response
+    sort:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: >-
+        Sort specification. Prefix field name with '-' for descending order.
+        Multiple sorts can be comma-separated.
+    where:
+      name: where
+      in: query
+      schema:
+        type: string
+      description: >-
+        Filter expression using NocoDB where-clause syntax.
+        Example: (field,eq,value)~and(field2,gt,5)
+    offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        default: 0
+      description: Number of rows to skip (for pagination)
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 25
+        maximum: 1000
+      description: Maximum number of rows to return per page
+  schemas:
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        mimetype:
+          type: string
+        size:
+          type: integer
+        title:
+          type: string
+        url:
+          type: string
+        icon:
+          type: string
+    Groupby:
+      title: Groupby
+      type: object
+      properties:
+        count:
+          type: number
+          description: count
+        column_name:
+          type: string
+          description: the value of the given column
+  securitySchemes:
+    xcToken:
+      type: apiKey
+      in: header
+      name: xc-token
+      description: NocoDB API token
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token authentication. Use 'Authorization: Bearer <token>'
+        header format.
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+              - msg
+security:
+  - xcToken: []
+  - bearerAuth: []

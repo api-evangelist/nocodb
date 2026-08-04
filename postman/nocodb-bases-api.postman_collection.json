@@ -1,0 +1,952 @@
+{
+  "info": {
+    "_postman_id": "6bf4c74e-a24a-496a-82ad-faf67ddd99a5",
+    "name": "NocoDB Data Attachments Bases API",
+    "description": "RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.\n\nContact Support:\n Name: NocoDB",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:36.000Z",
+    "updatedAt": "2026-07-28T02:20:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6bf4c74e-a24a-496a-82ad-faf67ddd99a5"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "meta",
+              "item": [
+                {
+                  "name": "bases",
+                  "item": [
+                    {
+                      "name": "{baseId}",
+                      "item": [
+                        {
+                          "name": "Read base",
+                          "id": "df776e04-0509-42d2-88c3-48c9e94f2351",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "xc-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases",
+                                ":baseId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "c321a4ae-0874-493e-a30b-a65845f809b9",
+                                  "key": "baseId",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the NocoDB base"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve details of a specific base by its identifier."
+                          },
+                          "response": [
+                            {
+                              "id": "ff99af03-49de-4306-a3ec-276c49a02d11",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"fk_workspace_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-ff99af03-49de-4306-a3ec-276c49a02d11"
+                            },
+                            {
+                              "id": "4691a3fd-f1a9-4b30-a506-0ef27a85bd95",
+                              "name": "BadRequest",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"msg\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-4691a3fd-f1a9-4b30-a506-0ef27a85bd95"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-df776e04-0509-42d2-88c3-48c9e94f2351"
+                        },
+                        {
+                          "name": "Update base",
+                          "id": "69d595f8-eb85-48ef-862e-c8b97c92935d",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "xc-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "PATCH",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases",
+                                ":baseId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7e6bb247-f67c-4c01-8b1b-e48233475c8f",
+                                  "key": "baseId",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the NocoDB base"
+                                }
+                              ]
+                            },
+                            "description": "Update metadata of a specific base."
+                          },
+                          "response": [
+                            {
+                              "id": "9797138f-9b07-4aca-90f3-4ca3f012b886",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-9797138f-9b07-4aca-90f3-4ca3f012b886"
+                            },
+                            {
+                              "id": "da13900d-421e-4030-a3ff-c5976ef39899",
+                              "name": "BadRequest",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"msg\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-da13900d-421e-4030-a3ff-c5976ef39899"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-69d595f8-eb85-48ef-862e-c8b97c92935d"
+                        },
+                        {
+                          "name": "Delete base",
+                          "id": "5e5d0e29-37e4-4ee5-8eef-58c02cc6322f",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "xc-token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases",
+                                ":baseId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "edcd44f0-71de-400d-99ed-d06d7d8e0439",
+                                  "key": "baseId",
+                                  "value": "<string>",
+                                  "description": "(Required) Unique identifier of the NocoDB base"
+                                }
+                              ]
+                            },
+                            "description": "Delete a specific base and all its data."
+                          },
+                          "response": [
+                            {
+                              "id": "0d1df304-cdb0-42ad-952b-a1286e8b58a6",
+                              "name": "OK",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-0d1df304-cdb0-42ad-952b-a1286e8b58a6"
+                            },
+                            {
+                              "id": "09416d5b-00cc-4a91-8a24-16f72d22e5f1",
+                              "name": "BadRequest",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "xc-token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/bases/:baseId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "bases",
+                                    ":baseId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "baseId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"msg\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:20:37.000Z",
+                              "updatedAt": "2026-07-28T02:20:37.000Z",
+                              "uid": "35240-09416d5b-00cc-4a91-8a24-16f72d22e5f1"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-5e5d0e29-37e4-4ee5-8eef-58c02cc6322f"
+                        }
+                      ],
+                      "id": "c1251bb9-642f-46aa-aedc-11ddeab969a8",
+                      "createdAt": "2026-07-28T02:20:37.000Z",
+                      "updatedAt": "2026-07-28T02:20:37.000Z",
+                      "uid": "35240-c1251bb9-642f-46aa-aedc-11ddeab969a8"
+                    },
+                    {
+                      "name": "List bases",
+                      "id": "d21951af-a69a-4083-9542-105cbfebb533",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "xc-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/meta/bases",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "meta",
+                            "bases"
+                          ]
+                        },
+                        "description": "List all bases accessible to the authenticated user."
+                      },
+                      "response": [
+                        {
+                          "id": "2f4a4e27-7148-48b6-8037-4a93274392a7",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "xc-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"fk_workspace_id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"fk_workspace_id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ],\n  \"pageInfo\": {\n    \"pageSize\": \"<integer>\",\n    \"totalRows\": \"<integer>\",\n    \"isFirstPage\": \"<boolean>\",\n    \"isLastPage\": \"<boolean>\",\n    \"page\": \"<number>\"\n  }\n}",
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-2f4a4e27-7148-48b6-8037-4a93274392a7"
+                        },
+                        {
+                          "id": "f8d6e905-930b-4aeb-a3cf-17861b604350",
+                          "name": "BadRequest",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "xc-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"msg\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-f8d6e905-930b-4aeb-a3cf-17861b604350"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:20:37.000Z",
+                      "updatedAt": "2026-07-28T02:20:37.000Z",
+                      "uid": "35240-d21951af-a69a-4083-9542-105cbfebb533"
+                    },
+                    {
+                      "name": "Create base",
+                      "id": "efdf7c2a-5c11-4846-a5f0-bf2e81719322",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "xc-token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "header",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/meta/bases",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "meta",
+                            "bases"
+                          ]
+                        },
+                        "description": "Create a new NocoDB base."
+                      },
+                      "response": [
+                        {
+                          "id": "45c36668-e076-4147-8b77-23d8d2ada2f4",
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "xc-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"fk_workspace_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-45c36668-e076-4147-8b77-23d8d2ada2f4"
+                        },
+                        {
+                          "id": "6e4b532d-b795-4bea-8427-3d58494435bd",
+                          "name": "BadRequest",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "xc-token",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/meta/bases",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "meta",
+                                "bases"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"msg\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:20:37.000Z",
+                          "updatedAt": "2026-07-28T02:20:37.000Z",
+                          "uid": "35240-6e4b532d-b795-4bea-8427-3d58494435bd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:20:37.000Z",
+                      "updatedAt": "2026-07-28T02:20:37.000Z",
+                      "uid": "35240-efdf7c2a-5c11-4846-a5f0-bf2e81719322"
+                    }
+                  ],
+                  "id": "9b296ea3-aaca-4e86-b761-701a909dea26",
+                  "createdAt": "2026-07-28T02:20:37.000Z",
+                  "updatedAt": "2026-07-28T02:20:37.000Z",
+                  "uid": "35240-9b296ea3-aaca-4e86-b761-701a909dea26"
+                }
+              ],
+              "id": "cfe7d3fc-ad7b-4efc-ab25-b503351e6174",
+              "createdAt": "2026-07-28T02:20:37.000Z",
+              "updatedAt": "2026-07-28T02:20:37.000Z",
+              "uid": "35240-cfe7d3fc-ad7b-4efc-ab25-b503351e6174"
+            }
+          ],
+          "id": "5eb007f1-a6d0-4864-94d3-74c2d14ff630",
+          "createdAt": "2026-07-28T02:20:37.000Z",
+          "updatedAt": "2026-07-28T02:20:37.000Z",
+          "uid": "35240-5eb007f1-a6d0-4864-94d3-74c2d14ff630"
+        }
+      ],
+      "id": "e97179b4-dce5-40cb-a829-12b4f1df942d",
+      "createdAt": "2026-07-28T02:20:37.000Z",
+      "updatedAt": "2026-07-28T02:20:37.000Z",
+      "uid": "35240-e97179b4-dce5-40cb-a829-12b4f1df942d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "xc-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.nocodb.com"
+    }
+  ]
+}

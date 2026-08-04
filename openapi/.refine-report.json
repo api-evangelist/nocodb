@@ -1,0 +1,30 @@
+{
+  "provider": "nocodb",
+  "sources": [
+    "nocodb-attachments-api-openapi.yml",
+    "nocodb-auth-api-openapi.yml",
+    "nocodb-bases-api-openapi.yml",
+    "nocodb-fields-api-openapi.yml",
+    "nocodb-hooks-api-openapi.yml",
+    "nocodb-links-api-openapi.yml",
+    "nocodb-records-api-openapi.yml",
+    "nocodb-tables-api-openapi.yml",
+    "nocodb-views-api-openapi.yml"
+  ],
+  "outputs": [
+    "nocodb-attachments-api-openapi.yml",
+    "nocodb-auth-api-openapi.yml",
+    "nocodb-bases-api-openapi.yml",
+    "nocodb-fields-api-openapi.yml",
+    "nocodb-hooks-api-openapi.yml",
+    "nocodb-links-api-openapi.yml",
+    "nocodb-records-api-openapi.yml",
+    "nocodb-tables-api-openapi.yml",
+    "nocodb-views-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

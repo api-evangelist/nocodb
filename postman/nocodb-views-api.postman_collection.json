@@ -1,0 +1,262 @@
+{
+  "info": {
+    "_postman_id": "48d8f570-3b98-4128-bdd2-e0af7c7bf174",
+    "name": "NocoDB Data Attachments Views API",
+    "description": "RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.\n\nContact Support:\n Name: NocoDB",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:20:43.000Z",
+    "updatedAt": "2026-07-28T02:20:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-48d8f570-3b98-4128-bdd2-e0af7c7bf174"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "meta",
+              "item": [
+                {
+                  "name": "tables",
+                  "item": [
+                    {
+                      "name": "{tableId}",
+                      "item": [
+                        {
+                          "name": "views",
+                          "item": [
+                            {
+                              "name": "List views",
+                              "id": "b063979a-83f4-451d-a40f-8d7a2c7f8093",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "xc-token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/meta/tables/:tableId/views",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "meta",
+                                    "tables",
+                                    ":tableId",
+                                    "views"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "67b3770a-4bec-461c-a06e-3c342c58b949",
+                                      "key": "tableId",
+                                      "value": "<string>",
+                                      "description": "(Required) Unique identifier of the NocoDB table"
+                                    }
+                                  ]
+                                },
+                                "description": "List all views for a specific table."
+                              },
+                              "response": [
+                                {
+                                  "id": "5ea52ba0-743d-49e6-b580-2710017acab4",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "xc-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/meta/tables/:tableId/views",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "meta",
+                                        "tables",
+                                        ":tableId",
+                                        "views"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "tableId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"list\": [\n    {\n      \"id\": \"<string>\",\n      \"fk_model_id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<integer>\",\n      \"lock_type\": \"collaborative\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"fk_model_id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<integer>\",\n      \"lock_type\": \"locked\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\"\n    }\n  ]\n}",
+                                  "createdAt": "2026-07-28T02:20:43.000Z",
+                                  "updatedAt": "2026-07-28T02:20:43.000Z",
+                                  "uid": "35240-5ea52ba0-743d-49e6-b580-2710017acab4"
+                                },
+                                {
+                                  "id": "525d39ea-330c-450c-a503-883a66be5dbd",
+                                  "name": "BadRequest",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "xc-token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/v1/meta/tables/:tableId/views",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "v1",
+                                        "meta",
+                                        "tables",
+                                        ":tableId",
+                                        "views"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "tableId"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"msg\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T02:20:43.000Z",
+                                  "updatedAt": "2026-07-28T02:20:43.000Z",
+                                  "uid": "35240-525d39ea-330c-450c-a503-883a66be5dbd"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T02:20:43.000Z",
+                              "updatedAt": "2026-07-28T02:20:43.000Z",
+                              "uid": "35240-b063979a-83f4-451d-a40f-8d7a2c7f8093"
+                            }
+                          ],
+                          "id": "ff4db018-d0a0-4287-819f-cac1c9c40b56",
+                          "createdAt": "2026-07-28T02:20:43.000Z",
+                          "updatedAt": "2026-07-28T02:20:43.000Z",
+                          "uid": "35240-ff4db018-d0a0-4287-819f-cac1c9c40b56"
+                        }
+                      ],
+                      "id": "24b9a67d-a4c0-4a1d-9683-f9f02621ade4",
+                      "createdAt": "2026-07-28T02:20:43.000Z",
+                      "updatedAt": "2026-07-28T02:20:43.000Z",
+                      "uid": "35240-24b9a67d-a4c0-4a1d-9683-f9f02621ade4"
+                    }
+                  ],
+                  "id": "bdd173e1-0f36-49d7-a048-fe387d8eac97",
+                  "createdAt": "2026-07-28T02:20:43.000Z",
+                  "updatedAt": "2026-07-28T02:20:43.000Z",
+                  "uid": "35240-bdd173e1-0f36-49d7-a048-fe387d8eac97"
+                }
+              ],
+              "id": "049bd378-ad3d-4a8e-9a9b-f9a05f7dec48",
+              "createdAt": "2026-07-28T02:20:43.000Z",
+              "updatedAt": "2026-07-28T02:20:43.000Z",
+              "uid": "35240-049bd378-ad3d-4a8e-9a9b-f9a05f7dec48"
+            }
+          ],
+          "id": "4a4e58f1-ec9f-4256-b9c1-19ab943ac295",
+          "createdAt": "2026-07-28T02:20:43.000Z",
+          "updatedAt": "2026-07-28T02:20:43.000Z",
+          "uid": "35240-4a4e58f1-ec9f-4256-b9c1-19ab943ac295"
+        }
+      ],
+      "id": "358608db-0f65-4170-9219-ba04c12cab8d",
+      "createdAt": "2026-07-28T02:20:43.000Z",
+      "updatedAt": "2026-07-28T02:20:43.000Z",
+      "uid": "35240-358608db-0f65-4170-9219-ba04c12cab8d"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "xc-token",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://app.nocodb.com"
+    }
+  ]
+}
