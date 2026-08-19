@@ -1,0 +1,978 @@
+{
+  "item": [
+    {
+      "id": "651be3f3-f0ae-48fa-a2a8-6d151a784f2c",
+      "name": "Tables",
+      "description": {
+        "content": "Table management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac88772a-c660-4096-bcea-4ce18eeec8c7",
+          "name": "List tables",
+          "request": {
+            "name": "List tables",
+            "description": {
+              "content": "List all tables within a specific base.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "meta",
+                "bases",
+                ":baseId",
+                "tables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseId",
+                  "description": "(Required) Unique identifier of the NocoDB base"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "xc-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f4dfc0fa-af14-41a7-8cf2-c69b9b80c4d2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "bases",
+                    ":baseId",
+                    "tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseId",
+                      "description": "(Required) Unique identifier of the NocoDB base"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"list\": [\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"table_name\": \"string\",\n      \"type\": \"view\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"column_name\": \"string\",\n          \"uidt\": \"string\",\n          \"dt\": \"string\",\n          \"pv\": false,\n          \"pk\": true,\n          \"required\": false,\n          \"unique\": true,\n          \"created_at\": \"1984-12-18T02:17:40.905Z\",\n          \"updated_at\": \"1947-09-15T14:00:29.056Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"column_name\": \"string\",\n          \"uidt\": \"string\",\n          \"dt\": \"string\",\n          \"pv\": false,\n          \"pk\": true,\n          \"required\": true,\n          \"unique\": false,\n          \"created_at\": \"2004-08-25T04:59:20.021Z\",\n          \"updated_at\": \"1983-12-14T16:32:22.951Z\"\n        }\n      ],\n      \"views\": [\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"type\": 1337,\n          \"lock_type\": \"collaborative\",\n          \"created_at\": \"1967-09-28T13:43:45.205Z\",\n          \"updated_at\": \"1975-09-03T14:59:41.619Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"type\": 8035,\n          \"lock_type\": \"locked\",\n          \"created_at\": \"1998-07-13T19:59:31.272Z\",\n          \"updated_at\": \"2021-04-05T19:41:42.805Z\"\n        }\n      ],\n      \"created_at\": \"1996-06-15T10:04:45.125Z\",\n      \"updated_at\": \"2007-06-11T02:13:53.783Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"table_name\": \"string\",\n      \"type\": \"view\",\n      \"columns\": [\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"column_name\": \"string\",\n          \"uidt\": \"string\",\n          \"dt\": \"string\",\n          \"pv\": true,\n          \"pk\": true,\n          \"required\": true,\n          \"unique\": true,\n          \"created_at\": \"1971-09-13T15:34:02.609Z\",\n          \"updated_at\": \"1986-01-29T21:56:29.726Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"column_name\": \"string\",\n          \"uidt\": \"string\",\n          \"dt\": \"string\",\n          \"pv\": false,\n          \"pk\": true,\n          \"required\": true,\n          \"unique\": false,\n          \"created_at\": \"1980-06-10T23:40:12.239Z\",\n          \"updated_at\": \"1982-01-01T16:29:05.824Z\"\n        }\n      ],\n      \"views\": [\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"type\": 1979,\n          \"lock_type\": \"locked\",\n          \"created_at\": \"2008-06-27T16:16:57.854Z\",\n          \"updated_at\": \"1969-07-26T22:33:36.689Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"fk_model_id\": \"string\",\n          \"title\": \"string\",\n          \"type\": 8468,\n          \"lock_type\": \"locked\",\n          \"created_at\": \"1969-05-09T03:13:13.015Z\",\n          \"updated_at\": \"1965-01-01T07:07:56.934Z\"\n        }\n      ],\n      \"created_at\": \"1980-03-17T04:02:47.198Z\",\n      \"updated_at\": \"2025-05-24T01:00:36.197Z\"\n    }\n  ],\n  \"pageInfo\": {\n    \"pageSize\": 4452,\n    \"totalRows\": 6987,\n    \"isFirstPage\": true,\n    \"isLastPage\": true,\n    \"page\": 4976.33652592531\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcc28324-3bfe-45cf-930e-1ac15221c168",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "bases",
+                    ":baseId",
+                    "tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseId",
+                      "description": "(Required) Unique identifier of the NocoDB base"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"BadRequest [Error]: <ERROR MESSAGE>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9bdc29e-d2ea-490e-8d9a-2d4601315e2f",
+          "name": "Create table",
+          "request": {
+            "name": "Create table",
+            "description": {
+              "content": "Create a new table within a base.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "meta",
+                "bases",
+                ":baseId",
+                "tables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "baseId",
+                  "description": "(Required) Unique identifier of the NocoDB base"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "xc-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8c7e4a0-d726-4249-97b2-b2c5620ecdce",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "bases",
+                    ":baseId",
+                    "tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseId",
+                      "description": "(Required) Unique identifier of the NocoDB base"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"fk_model_id\": \"string\",\n  \"title\": \"string\",\n  \"table_name\": \"string\",\n  \"type\": \"table\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"column_name\": \"string\",\n      \"uidt\": \"string\",\n      \"dt\": \"string\",\n      \"pv\": false,\n      \"pk\": true,\n      \"required\": true,\n      \"unique\": false,\n      \"created_at\": \"1958-11-30T14:22:42.104Z\",\n      \"updated_at\": \"1992-12-24T12:53:01.802Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"column_name\": \"string\",\n      \"uidt\": \"string\",\n      \"dt\": \"string\",\n      \"pv\": false,\n      \"pk\": true,\n      \"required\": true,\n      \"unique\": false,\n      \"created_at\": \"2003-07-02T12:01:24.571Z\",\n      \"updated_at\": \"2010-02-06T09:12:34.300Z\"\n    }\n  ],\n  \"views\": [\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"type\": 189,\n      \"lock_type\": \"personal\",\n      \"created_at\": \"1983-05-19T09:01:25.675Z\",\n      \"updated_at\": \"1983-11-16T10:44:19.008Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"type\": 2043,\n      \"lock_type\": \"personal\",\n      \"created_at\": \"1948-12-02T03:37:25.000Z\",\n      \"updated_at\": \"1954-07-29T07:40:38.113Z\"\n    }\n  ],\n  \"created_at\": \"2014-07-06T11:07:40.983Z\",\n  \"updated_at\": \"2001-12-19T06:48:28.308Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa22b85a-6a8c-4429-b467-5f52e628154f",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "bases",
+                    ":baseId",
+                    "tables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "baseId",
+                      "description": "(Required) Unique identifier of the NocoDB base"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"BadRequest [Error]: <ERROR MESSAGE>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9febf8b-aeb6-4f48-b076-41f22c4255b4",
+          "name": "Read table",
+          "request": {
+            "name": "Read table",
+            "description": {
+              "content": "Retrieve details of a specific table including its fields and views.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "meta",
+                "tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Unique identifier of the NocoDB table"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "xc-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d84485c-448d-4a99-8dc4-613af81a466e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"fk_model_id\": \"string\",\n  \"title\": \"string\",\n  \"table_name\": \"string\",\n  \"type\": \"table\",\n  \"columns\": [\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"column_name\": \"string\",\n      \"uidt\": \"string\",\n      \"dt\": \"string\",\n      \"pv\": false,\n      \"pk\": true,\n      \"required\": true,\n      \"unique\": false,\n      \"created_at\": \"1958-11-30T14:22:42.104Z\",\n      \"updated_at\": \"1992-12-24T12:53:01.802Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"column_name\": \"string\",\n      \"uidt\": \"string\",\n      \"dt\": \"string\",\n      \"pv\": false,\n      \"pk\": true,\n      \"required\": true,\n      \"unique\": false,\n      \"created_at\": \"2003-07-02T12:01:24.571Z\",\n      \"updated_at\": \"2010-02-06T09:12:34.300Z\"\n    }\n  ],\n  \"views\": [\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"type\": 189,\n      \"lock_type\": \"personal\",\n      \"created_at\": \"1983-05-19T09:01:25.675Z\",\n      \"updated_at\": \"1983-11-16T10:44:19.008Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"fk_model_id\": \"string\",\n      \"title\": \"string\",\n      \"type\": 2043,\n      \"lock_type\": \"personal\",\n      \"created_at\": \"1948-12-02T03:37:25.000Z\",\n      \"updated_at\": \"1954-07-29T07:40:38.113Z\"\n    }\n  ],\n  \"created_at\": \"2014-07-06T11:07:40.983Z\",\n  \"updated_at\": \"2001-12-19T06:48:28.308Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6f15c13-b8aa-47aa-a8ec-b6f83ea8e182",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"BadRequest [Error]: <ERROR MESSAGE>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "967b4fe4-0a5e-4923-b2bc-2f89306c86a1",
+          "name": "Update table",
+          "request": {
+            "name": "Update table",
+            "description": {
+              "content": "Update metadata of a specific table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "meta",
+                "tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Unique identifier of the NocoDB table"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "xc-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "13a4c420-3081-47dc-9e95-3d9fdb42095f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5695cbc1-1344-4a60-b1b7-6df8c29de5ed",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"table_name\": \"<string>\",\n  \"columns\": [\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"uidt\": \"<string>\",\n      \"column_name\": \"<string>\",\n      \"required\": \"<boolean>\",\n      \"unique\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"BadRequest [Error]: <ERROR MESSAGE>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1513377-13d6-499d-9d8a-e17b3f6f77fc",
+          "name": "Delete table",
+          "request": {
+            "name": "Delete table",
+            "description": {
+              "content": "Delete a specific table and all its records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "meta",
+                "tables",
+                ":tableId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableId",
+                  "description": "(Required) Unique identifier of the NocoDB table"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "xc-token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "50cfeb01-51f5-4808-a671-7a2d4c9004f9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "404f4c0d-5e56-4634-910f-df9f8a602a64",
+              "name": "BadRequest",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "meta",
+                    "tables",
+                    ":tableId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableId",
+                      "description": "(Required) Unique identifier of the NocoDB table"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "xc-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"msg\": \"BadRequest [Error]: <ERROR MESSAGE>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.nocodb.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "xc-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "402c1e5c-95f1-4a24-ae93-12f9e31ccab7",
+    "name": "NocoDB Data Attachments Tables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.\n\nContact Support:\n Name: NocoDB",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments Auth API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sign in",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v1/auth/user/signin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticate a user with email and password to receive an auth token."
+        },
+        {
+          "info": {
+            "name": "List API tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v1/auth/token/list",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all API tokens for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create API token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v1/auth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new API token for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Delete API token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.nocodb.com/api/v1/auth/token/:tokenId",
+            "params": [
+              {
+                "name": "tokenId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an API token by its identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

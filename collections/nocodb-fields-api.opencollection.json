@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments Fields API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v1/meta/tables/:tableId/fields",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all fields (columns) for a specific table."
+        },
+        {
+          "info": {
+            "name": "Create field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v1/meta/tables/:tableId/fields",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add a new field (column) to a specific table."
+        },
+        {
+          "info": {
+            "name": "Update field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.nocodb.com/api/v1/meta/fields/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a specific field configuration."
+        },
+        {
+          "info": {
+            "name": "Delete field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.nocodb.com/api/v1/meta/fields/:fieldId",
+            "params": [
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a specific field from a table."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments Links API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Links",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List linked records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v2/tables/:tableId/links/:fieldId/records/:recordId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path",
+                "description": "The link field identifier"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Primary key value of the record"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of field names to include in the response"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated."
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to skip (for pagination)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of rows to return per page"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all linked records for a specific link field on a record."
+        },
+        {
+          "info": {
+            "name": "Link records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v2/tables/:tableId/links/:fieldId/records/:recordId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Primary key value of the record"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Link one or more records to a specific link field on a record."
+        },
+        {
+          "info": {
+            "name": "Unlink records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.nocodb.com/api/v2/tables/:tableId/links/:fieldId/records/:recordId",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              },
+              {
+                "name": "fieldId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recordId",
+                "value": "",
+                "type": "path",
+                "description": "Primary key value of the record"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Remove links between records for a specific link field."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

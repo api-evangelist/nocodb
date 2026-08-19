@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments Views API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Views",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v1/meta/tables/:tableId/views",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all views for a specific table."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

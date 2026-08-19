@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attachments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v2/tables/:tableId/attachments",
+            "params": [
+              {
+                "name": "tableId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB table"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upload an attachment file to a NocoDB table."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

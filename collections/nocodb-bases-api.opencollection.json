@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NocoDB Data Attachments Bases API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "xc-token",
+      "value": "{{xc-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v1/meta/bases",
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all bases accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create base",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.nocodb.com/api/v1/meta/bases",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new NocoDB base."
+        },
+        {
+          "info": {
+            "name": "Read base",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.nocodb.com/api/v1/meta/bases/:baseId",
+            "params": [
+              {
+                "name": "baseId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB base"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve details of a specific base by its identifier."
+        },
+        {
+          "info": {
+            "name": "Update base",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.nocodb.com/api/v1/meta/bases/:baseId",
+            "params": [
+              {
+                "name": "baseId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB base"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update metadata of a specific base."
+        },
+        {
+          "info": {
+            "name": "Delete base",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.nocodb.com/api/v1/meta/bases/:baseId",
+            "params": [
+              {
+                "name": "baseId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the NocoDB base"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "xc-token",
+              "value": "{{xc-token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a specific base and all its data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
