@@ -30,6 +30,15 @@ tags:
   - No-Code
   - Low-Code
   - Airtable Alternative
+  - Open-Source
+  - Spreadsheet
+  - REST API
+  - Self-Hosted
+tags_raw:
+  - Database
+  - No-Code
+  - Low-Code
+  - Airtable Alternative
   - Open Source
   - Spreadsheet
   - REST API
@@ -57,6 +66,8 @@ apis:
   humanURL: https://nocodb.com/docs/product-docs/developer-resources/rest-apis
   baseURL: https://app.nocodb.com/api/v3
   tags:
+  - Authentication
+  tags_raw:
   - Auth
   properties:
   - type: OpenAPI
