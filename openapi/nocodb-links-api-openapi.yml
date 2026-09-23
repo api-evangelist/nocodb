@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: NocoDB Data Attachments Links API
+  title: NocoDB Data Links API
   version: '2.0'
   description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
   contact:
@@ -132,7 +132,36 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  schemas:
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
   parameters:
+    limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 25
+        maximum: 1000
+      description: Maximum number of rows to return per page
+    where:
+      name: where
+      in: query
+      schema:
+        type: string
+      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
     tableId:
       name: tableId
       in: path
@@ -153,12 +182,6 @@ components:
       schema:
         type: string
       description: Comma-separated list of field names to include in the response
-    where:
-      name: where
-      in: query
-      schema:
-        type: string
-      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
     recordId:
       name: recordId
       in: path
@@ -166,35 +189,12 @@ components:
       schema:
         type: string
       description: Primary key value of the record
-    limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        default: 25
-        maximum: 1000
-      description: Maximum number of rows to return per page
     sort:
       name: sort
       in: query
       schema:
         type: string
       description: Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated.
-  schemas:
-    Paginated:
-      title: Paginated
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        totalRows:
-          type: integer
-        isFirstPage:
-          type: boolean
-        isLastPage:
-          type: boolean
-        page:
-          type: number
   responses:
     BadRequest:
       description: BadRequest

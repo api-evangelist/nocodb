@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: NocoDB Data Attachments Records API
+  title: NocoDB Data Records API
   version: '2.0'
   description: RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD operations on rows, filtering via where-clause operators, pagination, sorting, field selection, and bulk operations. Available in v2 and v3; v3 adds quoted-value support for special characters in query parameters.
   contact:
@@ -226,6 +226,25 @@ paths:
       - bearerAuth: []
 components:
   parameters:
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Primary key value of the record
+    where:
+      name: where
+      in: query
+      schema:
+        type: string
+      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
+    viewId:
+      name: viewId
+      in: query
+      schema:
+        type: string
+      description: Optional view identifier to apply view-specific filters
     tableId:
       name: tableId
       in: path
@@ -246,25 +265,6 @@ components:
       schema:
         type: string
       description: Comma-separated list of field names to include in the response
-    sort:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated.
-    where:
-      name: where
-      in: query
-      schema:
-        type: string
-      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Primary key value of the record
     limit:
       name: limit
       in: query
@@ -273,12 +273,12 @@ components:
         default: 25
         maximum: 1000
       description: Maximum number of rows to return per page
-    viewId:
-      name: viewId
+    sort:
+      name: sort
       in: query
       schema:
         type: string
-      description: Optional view identifier to apply view-specific filters
+      description: Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated.
   schemas:
     Paginated:
       title: Paginated
