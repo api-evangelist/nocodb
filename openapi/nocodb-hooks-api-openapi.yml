@@ -74,21 +74,28 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   schemas:
-    Paginated:
-      title: Paginated
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        totalRows:
-          type: integer
-        isFirstPage:
-          type: boolean
-        isLastPage:
-          type: boolean
-        page:
-          type: number
     Hook:
       title: Hook
       type: object
@@ -127,6 +134,20 @@ components:
         updated_at:
           type: string
           format: date-time
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
     HookReq:
       title: HookReq
       type: object
@@ -159,27 +180,6 @@ components:
               type: string
             payload:
               type: object
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   securitySchemes:
     xcToken:
       type: apiKey

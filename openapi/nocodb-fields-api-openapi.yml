@@ -140,7 +140,33 @@ components:
                 example: 'BadRequest [Error]: <ERROR MESSAGE>'
             required:
             - msg
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   schemas:
+    FieldReq:
+      title: FieldReq
+      type: object
+      required:
+      - title
+      - uidt
+      properties:
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
+        required:
+          type: boolean
+        unique:
+          type: boolean
     Field:
       title: Field
       type: object
@@ -175,32 +201,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    FieldReq:
-      title: FieldReq
-      type: object
-      required:
-      - title
-      - uidt
-      properties:
-        title:
-          type: string
-        column_name:
-          type: string
-        uidt:
-          type: string
-          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
-        required:
-          type: boolean
-        unique:
-          type: boolean
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
   securitySchemes:
     xcToken:
       type: apiKey

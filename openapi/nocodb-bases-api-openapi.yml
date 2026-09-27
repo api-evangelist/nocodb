@@ -137,7 +137,30 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   schemas:
+    BaseReq:
+      title: BaseReq
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string
     Base:
       title: Base
       type: object
@@ -172,29 +195,6 @@ components:
           type: boolean
         page:
           type: number
-    BaseReq:
-      title: BaseReq
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   parameters:
     baseId:
       name: baseId

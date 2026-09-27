@@ -226,32 +226,12 @@ paths:
       - bearerAuth: []
 components:
   parameters:
-    recordId:
-      name: recordId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Primary key value of the record
-    where:
-      name: where
+    fields:
+      name: fields
       in: query
       schema:
         type: string
-      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
-    viewId:
-      name: viewId
-      in: query
-      schema:
-        type: string
-      description: Optional view identifier to apply view-specific filters
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
+      description: Comma-separated list of field names to include in the response
     offset:
       name: offset
       in: query
@@ -259,12 +239,12 @@ components:
         type: integer
         default: 0
       description: Number of rows to skip (for pagination)
-    fields:
-      name: fields
+    sort:
+      name: sort
       in: query
       schema:
         type: string
-      description: Comma-separated list of field names to include in the response
+      description: Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated.
     limit:
       name: limit
       in: query
@@ -273,12 +253,45 @@ components:
         default: 25
         maximum: 1000
       description: Maximum number of rows to return per page
-    sort:
-      name: sort
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
+    where:
+      name: where
       in: query
       schema:
         type: string
-      description: Sort specification. Prefix field name with '-' for descending order. Multiple sorts can be comma-separated.
+      description: 'Filter expression using NocoDB where-clause syntax. Example: (field,eq,value)~and(field2,gt,5)'
+    recordId:
+      name: recordId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Primary key value of the record
+    viewId:
+      name: viewId
+      in: query
+      schema:
+        type: string
+      description: Optional view identifier to apply view-specific filters
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   schemas:
     Paginated:
       title: Paginated
@@ -294,19 +307,6 @@ components:
           type: boolean
         page:
           type: number
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   securitySchemes:
     xcToken:
       type: apiKey
