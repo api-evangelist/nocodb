@@ -74,66 +74,7 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
   schemas:
-    Hook:
-      title: Hook
-      type: object
-      properties:
-        id:
-          type: string
-        fk_model_id:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-        event:
-          type: string
-          enum:
-          - after.insert
-          - after.update
-          - after.delete
-          - after.bulkInsert
-          - after.bulkUpdate
-          - after.bulkDelete
-        operation:
-          type: string
-        active:
-          type: boolean
-        notification:
-          type: object
-          properties:
-            type:
-              type: string
-            payload:
-              type: object
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
     Paginated:
       title: Paginated
       type: object
@@ -180,6 +121,65 @@ components:
               type: string
             payload:
               type: object
+    Hook:
+      title: Hook
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        event:
+          type: string
+          enum:
+          - after.insert
+          - after.update
+          - after.delete
+          - after.bulkInsert
+          - after.bulkUpdate
+          - after.bulkDelete
+        operation:
+          type: string
+        active:
+          type: boolean
+        notification:
+          type: object
+          properties:
+            type:
+              type: string
+            payload:
+              type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   securitySchemes:
     xcToken:
       type: apiKey

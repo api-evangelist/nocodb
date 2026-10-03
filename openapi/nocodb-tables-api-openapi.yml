@@ -142,6 +142,108 @@ paths:
       - bearerAuth: []
 components:
   schemas:
+    FieldReq:
+      title: FieldReq
+      type: object
+      required:
+      - title
+      - uidt
+      properties:
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
+        required:
+          type: boolean
+        unique:
+          type: boolean
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
+    Table:
+      title: Table
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        table_name:
+          type: string
+        type:
+          type: string
+          enum:
+          - table
+          - view
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        views:
+          type: array
+          items:
+            $ref: '#/components/schemas/View'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    View:
+      title: View
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        type:
+          type: integer
+          description: View type (1=Grid, 2=Form, 3=Gallery, 4=Kanban, 5=Calendar)
+        lock_type:
+          type: string
+          enum:
+          - collaborative
+          - locked
+          - personal
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    TableReq:
+      title: TableReq
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        table_name:
+          type: string
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldReq'
     Field:
       title: Field
       type: object
@@ -176,108 +278,21 @@ components:
         updated_at:
           type: string
           format: date-time
-    TableReq:
-      title: TableReq
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-        table_name:
-          type: string
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldReq'
-    Table:
-      title: Table
-      type: object
-      properties:
-        id:
-          type: string
-        fk_model_id:
-          type: string
-        title:
-          type: string
-        table_name:
-          type: string
-        type:
-          type: string
-          enum:
-          - table
-          - view
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        views:
-          type: array
-          items:
-            $ref: '#/components/schemas/View'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-    Paginated:
-      title: Paginated
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        totalRows:
-          type: integer
-        isFirstPage:
-          type: boolean
-        isLastPage:
-          type: boolean
-        page:
-          type: number
-    FieldReq:
-      title: FieldReq
-      type: object
-      required:
-      - title
-      - uidt
-      properties:
-        title:
-          type: string
-        column_name:
-          type: string
-        uidt:
-          type: string
-          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
-        required:
-          type: boolean
-        unique:
-          type: boolean
-    View:
-      title: View
-      type: object
-      properties:
-        id:
-          type: string
-        fk_model_id:
-          type: string
-        title:
-          type: string
-        type:
-          type: integer
-          description: View type (1=Grid, 2=Form, 3=Gallery, 4=Kanban, 5=Calendar)
-        lock_type:
-          type: string
-          enum:
-          - collaborative
-          - locked
-          - personal
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
+  parameters:
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   responses:
     BadRequest:
       description: BadRequest
@@ -291,21 +306,6 @@ components:
                 example: 'BadRequest [Error]: <ERROR MESSAGE>'
             required:
             - msg
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
-    baseId:
-      name: baseId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB base
   securitySchemes:
     xcToken:
       type: apiKey

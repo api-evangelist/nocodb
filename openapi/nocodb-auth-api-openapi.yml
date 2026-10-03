@@ -129,19 +129,6 @@ paths:
       security:
       - bearerAuth: []
 components:
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   schemas:
     ApiToken:
       title: ApiToken
@@ -161,6 +148,19 @@ components:
         updated_at:
           type: string
           format: date-time
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   securitySchemes:
     xcToken:
       type: apiKey

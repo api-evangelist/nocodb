@@ -137,20 +137,21 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   schemas:
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
     BaseReq:
       title: BaseReq
       type: object
@@ -181,20 +182,6 @@ components:
         updated_at:
           type: string
           format: date-time
-    Paginated:
-      title: Paginated
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        totalRows:
-          type: integer
-        isFirstPage:
-          type: boolean
-        isLastPage:
-          type: boolean
-        page:
-          type: number
   parameters:
     baseId:
       name: baseId
@@ -203,6 +190,19 @@ components:
       schema:
         type: string
       description: Unique identifier of the NocoDB base
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   securitySchemes:
     xcToken:
       type: apiKey
