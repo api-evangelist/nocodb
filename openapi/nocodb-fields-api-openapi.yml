@@ -127,25 +127,20 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   schemas:
-    FieldReq:
-      title: FieldReq
-      type: object
-      required:
-      - title
-      - uidt
-      properties:
-        title:
-          type: string
-        column_name:
-          type: string
-        uidt:
-          type: string
-          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
-        required:
-          type: boolean
-        unique:
-          type: boolean
     Field:
       title: Field
       type: object
@@ -180,19 +175,24 @@ components:
         updated_at:
           type: string
           format: date-time
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
+    FieldReq:
+      title: FieldReq
+      type: object
+      required:
+      - title
+      - uidt
+      properties:
+        title:
+          type: string
+        column_name:
+          type: string
+        uidt:
+          type: string
+          description: 'UI data type. Supported values: SingleLineText, LongText, Attachment, Checkbox, MultiSelect, SingleSelect, Date, Year, Time, PhoneNumber, Email, URL, Number, Decimal, Currency, Percent, Duration, Rating, Formula, Rollup, Count, Lookup, DateTime, CreateTime, LastModifiedTime, AutoNumber, Geometry, JSON, SpecificDBType, Text, Barcode, QrCode, Links'
+        required:
+          type: boolean
+        unique:
+          type: boolean
   parameters:
     tableId:
       name: tableId

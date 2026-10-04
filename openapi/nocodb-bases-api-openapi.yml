@@ -137,6 +137,14 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  parameters:
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
   schemas:
     Paginated:
       title: Paginated
@@ -182,14 +190,6 @@ components:
         updated_at:
           type: string
           format: date-time
-  parameters:
-    baseId:
-      name: baseId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB base
   responses:
     BadRequest:
       description: BadRequest

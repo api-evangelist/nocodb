@@ -51,21 +51,6 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
-  schemas:
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        mimetype:
-          type: string
-        size:
-          type: integer
-        title:
-          type: string
-        url:
-          type: string
-        icon:
-          type: string
   responses:
     BadRequest:
       description: BadRequest
@@ -87,6 +72,21 @@ components:
       schema:
         type: string
       description: Unique identifier of the NocoDB table
+  schemas:
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        mimetype:
+          type: string
+        size:
+          type: integer
+        title:
+          type: string
+        url:
+          type: string
+        icon:
+          type: string
   securitySchemes:
     xcToken:
       type: apiKey

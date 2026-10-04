@@ -74,6 +74,14 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   schemas:
     Paginated:
       title: Paginated
@@ -89,38 +97,6 @@ components:
           type: boolean
         page:
           type: number
-    HookReq:
-      title: HookReq
-      type: object
-      required:
-      - title
-      - event
-      - notification
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        event:
-          type: string
-          enum:
-          - after.insert
-          - after.update
-          - after.delete
-          - after.bulkInsert
-          - after.bulkUpdate
-          - after.bulkDelete
-        active:
-          type: boolean
-        notification:
-          type: object
-          required:
-          - type
-          properties:
-            type:
-              type: string
-            payload:
-              type: object
     Hook:
       title: Hook
       type: object
@@ -159,6 +135,38 @@ components:
         updated_at:
           type: string
           format: date-time
+    HookReq:
+      title: HookReq
+      type: object
+      required:
+      - title
+      - event
+      - notification
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        event:
+          type: string
+          enum:
+          - after.insert
+          - after.update
+          - after.delete
+          - after.bulkInsert
+          - after.bulkUpdate
+          - after.bulkDelete
+        active:
+          type: boolean
+        notification:
+          type: object
+          required:
+          - type
+          properties:
+            type:
+              type: string
+            payload:
+              type: object
   responses:
     BadRequest:
       description: BadRequest
@@ -172,14 +180,6 @@ components:
                 example: 'BadRequest [Error]: <ERROR MESSAGE>'
             required:
             - msg
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
   securitySchemes:
     xcToken:
       type: apiKey

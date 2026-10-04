@@ -141,7 +141,36 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
+  parameters:
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   schemas:
+    Paginated:
+      title: Paginated
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        totalRows:
+          type: integer
+        isFirstPage:
+          type: boolean
+        isLastPage:
+          type: boolean
+        page:
+          type: number
     FieldReq:
       title: FieldReq
       type: object
@@ -160,51 +189,6 @@ components:
           type: boolean
         unique:
           type: boolean
-    Paginated:
-      title: Paginated
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        totalRows:
-          type: integer
-        isFirstPage:
-          type: boolean
-        isLastPage:
-          type: boolean
-        page:
-          type: number
-    Table:
-      title: Table
-      type: object
-      properties:
-        id:
-          type: string
-        fk_model_id:
-          type: string
-        title:
-          type: string
-        table_name:
-          type: string
-        type:
-          type: string
-          enum:
-          - table
-          - view
-        columns:
-          type: array
-          items:
-            $ref: '#/components/schemas/Field'
-        views:
-          type: array
-          items:
-            $ref: '#/components/schemas/View'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
     View:
       title: View
       type: object
@@ -244,6 +228,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FieldReq'
+    Table:
+      title: Table
+      type: object
+      properties:
+        id:
+          type: string
+        fk_model_id:
+          type: string
+        title:
+          type: string
+        table_name:
+          type: string
+        type:
+          type: string
+          enum:
+          - table
+          - view
+        columns:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        views:
+          type: array
+          items:
+            $ref: '#/components/schemas/View'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
     Field:
       title: Field
       type: object
@@ -278,21 +293,6 @@ components:
         updated_at:
           type: string
           format: date-time
-  parameters:
-    baseId:
-      name: baseId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB base
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
   responses:
     BadRequest:
       description: BadRequest
