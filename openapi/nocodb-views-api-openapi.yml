@@ -46,19 +46,6 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
-  responses:
-    BadRequest:
-      description: BadRequest
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              msg:
-                type: string
-                example: 'BadRequest [Error]: <ERROR MESSAGE>'
-            required:
-            - msg
   schemas:
     View:
       title: View
@@ -85,6 +72,19 @@ components:
         updated_at:
           type: string
           format: date-time
+  responses:
+    BadRequest:
+      description: BadRequest
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              msg:
+                type: string
+                example: 'BadRequest [Error]: <ERROR MESSAGE>'
+            required:
+            - msg
   parameters:
     tableId:
       name: tableId

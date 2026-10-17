@@ -64,14 +64,6 @@ components:
                 example: 'BadRequest [Error]: <ERROR MESSAGE>'
             required:
             - msg
-  parameters:
-    tableId:
-      name: tableId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB table
   schemas:
     Attachment:
       title: Attachment
@@ -87,6 +79,14 @@ components:
           type: string
         icon:
           type: string
+  parameters:
+    tableId:
+      name: tableId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB table
   securitySchemes:
     xcToken:
       type: apiKey

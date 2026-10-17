@@ -137,14 +137,6 @@ paths:
       - xcToken: []
       - bearerAuth: []
 components:
-  parameters:
-    baseId:
-      name: baseId
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier of the NocoDB base
   schemas:
     Paginated:
       title: Paginated
@@ -160,16 +152,6 @@ components:
           type: boolean
         page:
           type: number
-    BaseReq:
-      title: BaseReq
-      type: object
-      required:
-      - title
-      properties:
-        title:
-          type: string
-        description:
-          type: string
     Base:
       title: Base
       type: object
@@ -190,6 +172,16 @@ components:
         updated_at:
           type: string
           format: date-time
+    BaseReq:
+      title: BaseReq
+      type: object
+      required:
+      - title
+      properties:
+        title:
+          type: string
+        description:
+          type: string
   responses:
     BadRequest:
       description: BadRequest
@@ -203,6 +195,14 @@ components:
                 example: 'BadRequest [Error]: <ERROR MESSAGE>'
             required:
             - msg
+  parameters:
+    baseId:
+      name: baseId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier of the NocoDB base
   securitySchemes:
     xcToken:
       type: apiKey
