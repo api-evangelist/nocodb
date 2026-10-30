@@ -1,4 +1,4 @@
-# NocoDB (nocodb)
+# NocoDB
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,177 @@
 
 NocoDB is an open-source, self-hostable alternative to Airtable that turns any relational database — MySQL, PostgreSQL, Microsoft SQL Server, or SQLite — into a collaborative smart spreadsheet. It exposes a versioned REST API (v2 and v3) with separate Data APIs for record CRUD operations and Meta APIs for managing workspaces, bases, tables, fields, views, and attachments. Authentication is handled via API tokens or session auth tokens, with Swagger UI bundled into every instance for live exploration. NocoDB is available as a free community self-hosted deployment or as a managed cloud service with tiered plans ranging from Free to Enterprise.
 
-APIs.json: [https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/nocodb/refs/heads/main/apis.yml)
+**Areas:** Database · No-Code · Low-Code · Airtable Alternative · Open Source · Spreadsheets · REST API · Self-Hosted
 
-Naftiko: [https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=nocodb-api-evangelist&utm_content=repo](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=nocodb-api-evangelist&utm_content=repo)
+## NocoDB on APIs.io
 
-## Tags
+Everything profiled for NocoDB is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nocodb/](https://apis.io/providers/nocodb/)** — or go straight to one of the APIs or properties below.
 
-- Database
-- No-Code
-- Low-Code
-- Airtable Alternative
-- Open Source
-- Spreadsheet
-- REST API
-- Self-Hosted
+### APIs (9)
 
-## APIs
+- [NocoDB Attachments API](https://apis.io/apis/nocodb/nocodb-attachments-api/) — File attachment operations
+- [NocoDB Auth API](https://apis.io/apis/nocodb/nocodb-auth-api/) — Authentication and token management
+- [NocoDB Bases API](https://apis.io/apis/nocodb/nocodb-bases-api/) — Base (database) management operations
+- [NocoDB Fields API](https://apis.io/apis/nocodb/nocodb-fields-api/) — Field/column management operations
+- [NocoDB Hooks API](https://apis.io/apis/nocodb/nocodb-hooks-api/) — Webhook management operations
+- [NocoDB Links API](https://apis.io/apis/nocodb/nocodb-links-api/) — Link relationship operations between records
+- [NocoDB Records API](https://apis.io/apis/nocodb/nocodb-records-api/) — CRUD operations on table rows/records
+- [NocoDB Tables API](https://apis.io/apis/nocodb/nocodb-tables-api/) — Table management operations
+- [NocoDB Views API](https://apis.io/apis/nocodb/nocodb-views-api/) — View management operations
 
-| Name | Description |
-|------|-------------|
-| NocoDB Data API | RESTful API for querying and manipulating records across tables and views in any NocoDB base. Supports full CRUD on rows, filtering, pagination, sorting, field selection, and bulk operations. Available in v2 and v3. |
-| NocoDB Meta API | RESTful API for managing NocoDB metadata including workspaces, bases, tables, fields, views, hooks (webhooks), scripts, and user permissions. Higher-tier plan features require Business or Enterprise. |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Path |
-|----------|------|
-| Plans & Pricing | [plans/nocodb-plans-pricing.yml](plans/nocodb-plans-pricing.yml) |
-| Rate Limits | [rate-limits/nocodb-rate-limits.yml](rate-limits/nocodb-rate-limits.yml) |
-| FinOps | [finops/nocodb-finops.yml](finops/nocodb-finops.yml) |
+#### Agentic access (1)
 
-**Pricing summary:** Free (cloud, 3 editors / 1 k records / 1 k API calls/mo) · Plus $12/seat/mo · Business $24/seat/mo · Scale $45/seat/mo · Enterprise (custom). Self-hosted Community edition is free and unlimited.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-**Rate limits:** 5 requests/second per user across all plans. HTTP 429 returned on breach; default retry window is 30 seconds.
+- [Nocodb Agentic Access](https://apis.io/agentic-access/nocodb/nocodb-agentic-access/)
 
-## Timestamps
+#### JSON Schema (2)
 
-- Created: 2026-06-12
-- Modified: 2026-06-12
+The data models the API reads and writes.
 
-## Common Properties
+- [NocoDB Record](https://apis.io/schemas/nocodb/nocodb-record/)
+- [NocoDB Table](https://apis.io/schemas/nocodb/nocodb-table/)
 
-| Type | URL |
-|------|-----|
-| Website | https://nocodb.com/ |
-| Documentation | https://nocodb.com/docs/product-docs/developer-resources/rest-apis |
-| GitHub Organization | https://github.com/nocodb |
-| LinkedIn | https://www.linkedin.com/company/nocodb |
-| Blog | https://nocodb.com/blog |
-| Pricing | https://nocodb.com/pricing |
-| Status Page | https://status.nocodb.com/ |
-| Changelog | https://nocodb.com/changelog |
-| X | https://x.com/nocodb |
-| SDK (npm) | https://www.npmjs.com/package/nocodb-sdk |
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-| Name | Email |
-|------|-------|
-| Kin Lane | kin@apievangelist.com |
+- [Nocodb Context](https://apis.io/jsonld/nocodb/nocodb-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [NocoDB API Vocabulary](https://apis.io/vocabularies/nocodb/nocodb-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Nocodb Create Record Example](https://apis.io/examples/nocodb/nocodb-create-record-example/)
+- [Nocodb List Records Example](https://apis.io/examples/nocodb/nocodb-list-records-example/)
+
+#### Collections (18)
+
+Postman and Open Collection request collections.
+
+- [NocoDB Data Attachments API](https://apis.io/collections/nocodb/open-nocodb-attachments-api/)
+- [NocoDB Data Attachments Auth API](https://apis.io/collections/nocodb/open-nocodb-auth-api/)
+- [NocoDB Data Attachments Bases API](https://apis.io/collections/nocodb/open-nocodb-bases-api/)
+- [NocoDB Data Attachments Fields API](https://apis.io/collections/nocodb/open-nocodb-fields-api/)
+- [NocoDB Data Attachments Hooks API](https://apis.io/collections/nocodb/open-nocodb-hooks-api/)
+- [NocoDB Data Attachments Links API](https://apis.io/collections/nocodb/open-nocodb-links-api/)
+- [NocoDB Data Attachments Records API](https://apis.io/collections/nocodb/open-nocodb-records-api/)
+- [NocoDB Data Attachments Tables API](https://apis.io/collections/nocodb/open-nocodb-tables-api/)
+- [NocoDB Data Attachments Views API](https://apis.io/collections/nocodb/open-nocodb-views-api/)
+- [NocoDB Data Attachments API](https://apis.io/collections/nocodb/postman-nocodb-attachments-api/)
+- [NocoDB Data Attachments Auth API](https://apis.io/collections/nocodb/postman-nocodb-auth-api/)
+- [NocoDB Data Attachments Bases API](https://apis.io/collections/nocodb/postman-nocodb-bases-api/)
+- [NocoDB Data Attachments Fields API](https://apis.io/collections/nocodb/postman-nocodb-fields-api/)
+- [NocoDB Data Attachments Hooks API](https://apis.io/collections/nocodb/postman-nocodb-hooks-api/)
+- [NocoDB Data Attachments Links API](https://apis.io/collections/nocodb/postman-nocodb-links-api/)
+- [NocoDB Data Attachments Records API](https://apis.io/collections/nocodb/postman-nocodb-records-api/)
+- [NocoDB Data Attachments Tables API](https://apis.io/collections/nocodb/postman-nocodb-tables-api/)
+- [NocoDB Data Attachments Views API](https://apis.io/collections/nocodb/postman-nocodb-views-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [NocoDB — jsonschema rules](https://apis.io/rules/nocodb/nocodb-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nocodb Authentication](https://apis.io/security/nocodb/nocodb-authentication/)
+- [Nocodb Domain Security](https://apis.io/security/nocodb/nocodb-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Nocodb Plans Pricing](https://apis.io/plans/nocodb/nocodb-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Nocodb Rate Limits](https://apis.io/rate-limits/nocodb/nocodb-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Nocodb Finops](https://apis.io/finops/nocodb/nocodb-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://nocodb.com/)
+- [Documentation](https://nocodb.com/docs/product-docs/developer-resources/rest-apis)
+- [Pricing](https://nocodb.com/pricing)
+- [Changelog](https://nocodb.com/changelog)
+- [Blog](https://nocodb.com/blog)
+- [GitHub](https://github.com/nocodb)
+- [Status](https://status.nocodb.com/)
+
+## API Evangelist rating
+
+**Kin Score 39.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 61.3 |
+| Contract governance | 23.5 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nocodb/](https://apis.io/providers/nocodb/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for NocoDB: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nocodb/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
